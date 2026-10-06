@@ -1100,3 +1100,43 @@ footer a:hover {
 .about-content h2 em {
     color: var(--blue) !important;
 }
+/* ================================
+   MOBILE HERO SPACING FIX
+   ================================ */
+
+@media (max-width: 768px) {
+
+  .hero {
+    min-height: auto !important;
+    height: auto !important;
+    padding-top: 70px !important;
+    padding-bottom: 55px !important;
+  }
+
+  .hero-content {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  .hero .eyebrow {
+    margin-top: 0 !important;
+  }
+
+  .hero h1 {
+    margin-top: 18px !important;
+    margin-bottom: 28px !important;
+  }
+
+  .hero p {
+    margin-top: 0 !important;
+    margin-bottom: 28px !important;
+  }
+
+  .hero-actions {
+    margin-top: 0 !important;
+  }
+
+  .hero-scroll {
+    margin-top: 55px !important;
+  }
+}
