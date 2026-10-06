@@ -1078,3 +1078,20 @@ footer a:hover {
         display: inline-flex !important;
     }
 }
+/* ========================================
+   PREMIUM BLUE TITLE HEADINGS
+   ======================================== */
+
+.hero h1,
+.section-header h2,
+.project-info h3,
+.cta h2 {
+    color: var(--blue) !important;
+}
+
+/* Keep the italic emphasis clean and consistent */
+.hero h1 em,
+.section-header h2 em,
+.cta h2 em {
+    color: var(--blue) !important;
+}
