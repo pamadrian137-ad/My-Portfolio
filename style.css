@@ -1095,3 +1095,8 @@ footer a:hover {
 .cta h2 em {
     color: var(--blue) !important;
 }
+/* CREATIVE SECTION HEADING */
+.about-content h2,
+.about-content h2 em {
+    color: var(--blue) !important;
+}
