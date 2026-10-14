@@ -1,16 +1,25 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>AIKEN'S WRLD — Web Portfolio</title>
+    <title>AIKEN'S WRLD — Selected Digital Experiences by Adrian Ndola</title>
 
     <meta name="description"
-        content="Selected web experiences designed and developed by Adrian Ndola.">
+        content="Explore selected websites, digital experiences, e-commerce platforms and creative projects designed and developed by Adrian Ndola under AIKEN'S WRLD.">
+
+    <meta name="author" content="Adrian Ndola">
+    <meta name="theme-color" content="#f7f6f2">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="AIKEN'S WRLD — Digital Experiences">
+    <meta property="og:description"
+        content="Selected digital experiences designed and developed by Adrian Ndola.">
+    <meta property="og:image" content="images/aikens-palace.jpg">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,202 +30,204 @@
 
     <link rel="stylesheet" href="style.css">
 
-</head>
+    <link rel="icon" href="images/favicon.png" type="image/png">
 
+</head>
 
 <body>
 
-    <!-- CURSOR EFFECT -->
-    <div class="cursor-glow"></div>
+    <!-- ACCESSIBILITY: SKIP NAVIGATION -->
+    <a href="#main-content" class="skip-link">
+        Skip to content
+    </a>
 
+    <!-- AMBIENT CURSOR EFFECT -->
+    <div class="cursor-glow" aria-hidden="true"></div>
 
-    <!-- NAVIGATION -->
+    <!-- HEADER / NAVIGATION -->
     <header class="navbar">
 
-        <nav>
+        <a href="#home" class="brand-mark" aria-label="AIKEN'S WRLD home">
+            <span class="brand-symbol">A</span>
+            <span class="brand-name">AIKEN'S WRLD</span>
+        </a>
 
-            <a href="#work">
-                Work
-            </a>
+        <button
+            class="menu-toggle"
+            type="button"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            aria-controls="primary-navigation">
 
-            <a href="about.html">
-                About
-            </a>
+            <span></span>
+            <span></span>
 
-            <a href="contact.html">
-                Contact
-            </a>
+        </button>
 
-            <a href="https://www.behance.net/adrianndola"
-               target="_blank"
-               rel="noopener noreferrer">
-                Behance ↗
+        <nav id="primary-navigation" aria-label="Main navigation">
+
+            <a href="#work">Work</a>
+
+            <a href="#about">About</a>
+
+            <a href="#contact">Contact</a>
+
+            <a
+                href="https://www.behance.net/adrianndola"
+                target="_blank"
+                rel="noopener noreferrer">
+
+                Behance <span aria-hidden="true">↗</span>
+
             </a>
 
         </nav>
 
     </header>
 
+    <main id="main-content">
 
-    <!-- HERO -->
-    <main>
-
+        <!-- HERO SECTION -->
         <section class="hero" id="home">
 
             <div class="hero-label">
-
-                <span></span>
-
-                SELECTED WEB EXPERIENCES
-
+                <span aria-hidden="true"></span>
+                INDEPENDENT CREATIVE PORTFOLIO
             </div>
 
-
             <h1>
-
                 Websites built to
-
                 <em>stand out.</em>
-
             </h1>
 
-
             <p class="hero-description">
+                Thoughtful design. Distinctive identities.
+                Digital experiences built with intention.
 
-                A collection of digital experiences designed and
-                developed by <strong>Adrian Ndola</strong> under
+                A selection of work by
+                <strong>Adrian Ndola</strong>, created under
                 AIKEN'S WRLD.
-
             </p>
-
 
             <div class="hero-buttons">
 
-                <a href="#work"
-                   class="primary-button">
-
+                <a href="#work" class="primary-button">
                     Explore the work
-
-                    <span>↓</span>
-
+                    <span aria-hidden="true">↘</span>
                 </a>
 
+                <a
+                    href="https://www.behance.net/adrianndola"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="secondary-link">
 
-                <a href="https://www.behance.net/adrianndola"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   class="secondary-link">
-
-                    View my Behance ↗
+                    Discover my Behance
+                    <span aria-hidden="true">↗</span>
 
                 </a>
 
             </div>
 
+            <div class="hero-meta">
 
-            <div class="scroll-text">
+                <span>DESIGN · DEVELOPMENT · DIGITAL</span>
 
-                SCROLL TO EXPLORE ↓
+                <span class="scroll-text">
+                    SCROLL TO EXPLORE
+                    <span aria-hidden="true">↓</span>
+                </span>
 
             </div>
 
         </section>
 
-
-        <!-- PROJECTS -->
+        <!-- SELECTED PROJECTS -->
         <section class="work" id="work">
 
             <div class="section-header">
 
-                <div>
+                <div class="section-heading">
 
                     <span class="section-label">
-
                         01 — SELECTED WORK
-
                     </span>
 
-
                     <h2>
-
                         Built for different
-
                         <em>worlds.</em>
-
                     </h2>
 
                 </div>
 
-
                 <p>
-
-                    Six live websites. Six different experiences.
-                    One creative direction, making the web feel
-                    less ordinary.
-
+                    Six digital experiences across different industries.
+                    Each project explores its own identity, purpose and
+                    approach to the modern web.
                 </p>
 
             </div>
 
-
             <div class="projects">
 
-
-                <!-- PROJECT 1 -->
+                <!-- PROJECT 01: AIKEN'S PALACE -->
                 <article class="project">
 
-                    <div class="project-number">
-                        01
-                    </div>
+                    <span class="project-number">01 / 06</span>
 
+                    <a
+                        href="https://aikens-palace.vercel.app/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="project-preview-link"
+                        aria-label="Explore AIKEN'S PALACE website">
 
-                    <div class="website-preview palace">
+                        <div class="website-preview palace">
 
-                        <div class="browser-bar">
+                            <div class="browser-bar">
 
-                            <div class="browser-dots">
+                                <div class="browser-dots" aria-hidden="true">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
 
-                                <span></span>
-                                <span></span>
-                                <span></span>
+                                <small>aikens-palace.vercel.app</small>
+
+                                <span class="browser-action" aria-hidden="true">↗</span>
 
                             </div>
 
+                            <div class="preview-content">
 
-                            <small>
-                                aikens-palace.vercel.app
-                            </small>
+                                <img
+                                    src="images/aikens-palace.jpg"
+                                    alt="AIKEN'S PALACE hospitality website preview"
+                                    loading="lazy"
+                                    decoding="async">
 
-                        </div>
-
-
-                        <div class="preview-content">
-
-                            <img
-                                src="images/aikens-palace.jpg"
-                                alt="AIKEN'S PALACE website"
-                                loading="lazy">
+                            </div>
 
                         </div>
 
-                    </div>
-
+                    </a>
 
                     <div class="project-info">
 
-                        <div>
+                        <div class="project-details">
 
                             <span class="project-category">
                                 HOSPITALITY / WEB DESIGN
                             </span>
 
+                            <h3>AIKEN'S PALACE</h3>
 
-                            <h3>
-                                AIKEN'S PALACE
-                            </h3>
+                            <p class="project-description">
+                                A digital experience built around hospitality
+                                and brand presentation.
+                            </p>
 
                         </div>
-
 
                         <a
                             href="https://aikens-palace.vercel.app/"
@@ -224,7 +235,7 @@
                             rel="noopener noreferrer"
                             class="view-site">
 
-                            View live site ↗
+                            Explore project <span aria-hidden="true">↗</span>
 
                         </a>
 
@@ -232,62 +243,64 @@
 
                 </article>
 
-
-                <!-- PROJECT 2 -->
+                <!-- PROJECT 02: RANJOS CAPITAL -->
                 <article class="project">
 
-                    <div class="project-number">
-                        02
-                    </div>
+                    <span class="project-number">02 / 06</span>
 
+                    <a
+                        href="https://ranjos-capital.vercel.app/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="project-preview-link"
+                        aria-label="Explore Ranjos Capital website">
 
-                    <div class="website-preview ranjos">
+                        <div class="website-preview ranjos">
 
-                        <div class="browser-bar">
+                            <div class="browser-bar">
 
-                            <div class="browser-dots">
+                                <div class="browser-dots" aria-hidden="true">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
 
-                                <span></span>
-                                <span></span>
-                                <span></span>
+                                <small>ranjos-capital.vercel.app</small>
+
+                                <span class="browser-action" aria-hidden="true">↗</span>
 
                             </div>
 
+                            <div class="preview-content">
 
-                            <small>
-                                ranjos-capital.vercel.app
-                            </small>
+                                <img
+                                    src="images/ranjos-capital.jpg"
+                                    alt="Ranjos Capital fashion e-commerce website preview"
+                                    loading="lazy"
+                                    decoding="async">
 
-                        </div>
-
-
-                        <div class="preview-content">
-
-                            <img
-                                src="images/ranjos-capital.jpg"
-                                alt="Ranjos Capital website"
-                                loading="lazy">
+                            </div>
 
                         </div>
 
-                    </div>
-
+                    </a>
 
                     <div class="project-info">
 
-                        <div>
+                        <div class="project-details">
 
                             <span class="project-category">
                                 FASHION / E-COMMERCE
                             </span>
 
+                            <h3>RANJOS CAPITAL</h3>
 
-                            <h3>
-                                RANJOS CAPITAL
-                            </h3>
+                            <p class="project-description">
+                                A fashion-focused shopping experience with
+                                a distinctive digital identity.
+                            </p>
 
                         </div>
-
 
                         <a
                             href="https://ranjos-capital.vercel.app/"
@@ -295,7 +308,7 @@
                             rel="noopener noreferrer"
                             class="view-site">
 
-                            View live site ↗
+                            Explore project <span aria-hidden="true">↗</span>
 
                         </a>
 
@@ -303,62 +316,64 @@
 
                 </article>
 
-
-                <!-- PROJECT 3 -->
+                <!-- PROJECT 03: AIKEN MARKETPLACE -->
                 <article class="project">
 
-                    <div class="project-number">
-                        03
-                    </div>
+                    <span class="project-number">03 / 06</span>
 
+                    <a
+                        href="https://aiken-ecommerce.vercel.app/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="project-preview-link"
+                        aria-label="Explore AIKEN Marketplace website">
 
-                    <div class="website-preview marketplace">
+                        <div class="website-preview marketplace">
 
-                        <div class="browser-bar">
+                            <div class="browser-bar">
 
-                            <div class="browser-dots">
+                                <div class="browser-dots" aria-hidden="true">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
 
-                                <span></span>
-                                <span></span>
-                                <span></span>
+                                <small>aiken-ecommerce.vercel.app</small>
+
+                                <span class="browser-action" aria-hidden="true">↗</span>
 
                             </div>
 
+                            <div class="preview-content">
 
-                            <small>
-                                aiken-ecommerce.vercel.app
-                            </small>
+                                <img
+                                    src="images/aiken-marketplace.jpg"
+                                    alt="AIKEN Marketplace e-commerce website preview"
+                                    loading="lazy"
+                                    decoding="async">
 
-                        </div>
-
-
-                        <div class="preview-content">
-
-                            <img
-                                src="images/aiken-marketplace.jpg"
-                                alt="Aiken Marketplace website"
-                                loading="lazy">
+                            </div>
 
                         </div>
 
-                    </div>
-
+                    </a>
 
                     <div class="project-info">
 
-                        <div>
+                        <div class="project-details">
 
                             <span class="project-category">
-                                E-COMMERCE / UI
+                                E-COMMERCE / UI DESIGN
                             </span>
 
+                            <h3>AIKEN MARKETPLACE</h3>
 
-                            <h3>
-                                AIKEN MARKETPLACE
-                            </h3>
+                            <p class="project-description">
+                                A digital storefront concept focused on
+                                product discovery and user experience.
+                            </p>
 
                         </div>
-
 
                         <a
                             href="https://aiken-ecommerce.vercel.app/"
@@ -366,7 +381,7 @@
                             rel="noopener noreferrer"
                             class="view-site">
 
-                            View live site ↗
+                            Explore project <span aria-hidden="true">↗</span>
 
                         </a>
 
@@ -374,62 +389,64 @@
 
                 </article>
 
-
-                <!-- PROJECT 4 -->
+                <!-- PROJECT 04: AIKEN'S WRLD AGENCY -->
                 <article class="project">
 
-                    <div class="project-number">
-                        04
-                    </div>
+                    <span class="project-number">04 / 06</span>
 
+                    <a
+                        href="https://thecreativeaiken-ops.github.io/aikenswrldagency/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="project-preview-link"
+                        aria-label="Explore AIKEN'S WRLD Agency website">
 
-                    <div class="website-preview agency">
+                        <div class="website-preview agency">
 
-                        <div class="browser-bar">
+                            <div class="browser-bar">
 
-                            <div class="browser-dots">
+                                <div class="browser-dots" aria-hidden="true">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
 
-                                <span></span>
-                                <span></span>
-                                <span></span>
+                                <small>aikenswrldagency.github.io</small>
+
+                                <span class="browser-action" aria-hidden="true">↗</span>
 
                             </div>
 
+                            <div class="preview-content">
 
-                            <small>
-                                aikenswrldagency
-                            </small>
+                                <img
+                                    src="images/aikens-agency.jpg"
+                                    alt="AIKEN'S WRLD Agency digital marketing website preview"
+                                    loading="lazy"
+                                    decoding="async">
 
-                        </div>
-
-
-                        <div class="preview-content">
-
-                            <img
-                                src="images/aikens-agency.jpg"
-                                alt="AIKEN'S WRLD Agency website"
-                                loading="lazy">
+                            </div>
 
                         </div>
 
-                    </div>
-
+                    </a>
 
                     <div class="project-info">
 
-                        <div>
+                        <div class="project-details">
 
                             <span class="project-category">
-                                AGENCY / DIGITAL MARKETING
+                                CREATIVE AGENCY / DIGITAL MARKETING
                             </span>
 
+                            <h3>AIKEN'S WRLD AGENCY</h3>
 
-                            <h3>
-                                AIKEN'S WRLD AGENCY
-                            </h3>
+                            <p class="project-description">
+                                A creative agency presence for digital
+                                strategy, design and brand growth.
+                            </p>
 
                         </div>
-
 
                         <a
                             href="https://thecreativeaiken-ops.github.io/aikenswrldagency/"
@@ -437,7 +454,7 @@
                             rel="noopener noreferrer"
                             class="view-site">
 
-                            View live site ↗
+                            Explore project <span aria-hidden="true">↗</span>
 
                         </a>
 
@@ -445,62 +462,64 @@
 
                 </article>
 
-
-                <!-- PROJECT 5 -->
+                <!-- PROJECT 05: ALL STAR BURGER -->
                 <article class="project">
 
-                    <div class="project-number">
-                        05
-                    </div>
+                    <span class="project-number">05 / 06</span>
 
+                    <a
+                        href="https://all-star-burger.vercel.app/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="project-preview-link"
+                        aria-label="Explore All Star Burger website">
 
-                    <div class="website-preview burger">
+                        <div class="website-preview burger">
 
-                        <div class="browser-bar">
+                            <div class="browser-bar">
 
-                            <div class="browser-dots">
+                                <div class="browser-dots" aria-hidden="true">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
 
-                                <span></span>
-                                <span></span>
-                                <span></span>
+                                <small>all-star-burger.vercel.app</small>
+
+                                <span class="browser-action" aria-hidden="true">↗</span>
 
                             </div>
 
+                            <div class="preview-content">
 
-                            <small>
-                                all-star-burger.vercel.app
-                            </small>
+                                <img
+                                    src="images/all-star-burger.jpg"
+                                    alt="All Star Burger restaurant website preview"
+                                    loading="lazy"
+                                    decoding="async">
 
-                        </div>
-
-
-                        <div class="preview-content">
-
-                            <img
-                                src="images/all-star-burger.jpg"
-                                alt="All Star Burger website"
-                                loading="lazy">
+                            </div>
 
                         </div>
 
-                    </div>
-
+                    </a>
 
                     <div class="project-info">
 
-                        <div>
+                        <div class="project-details">
 
                             <span class="project-category">
                                 RESTAURANT / BRAND EXPERIENCE
                             </span>
 
+                            <h3>ALL STAR BURGER</h3>
 
-                            <h3>
-                                ALL STAR BURGER
-                            </h3>
+                            <p class="project-description">
+                                A restaurant-focused web concept built
+                                around appetite, identity and presentation.
+                            </p>
 
                         </div>
-
 
                         <a
                             href="https://all-star-burger.vercel.app/"
@@ -508,7 +527,7 @@
                             rel="noopener noreferrer"
                             class="view-site">
 
-                            View live site ↗
+                            Explore project <span aria-hidden="true">↗</span>
 
                         </a>
 
@@ -516,62 +535,64 @@
 
                 </article>
 
-
-                <!-- PROJECT 6 -->
+                <!-- PROJECT 06: NOVA -->
                 <article class="project">
 
-                    <div class="project-number">
-                        06
-                    </div>
+                    <span class="project-number">06 / 06</span>
 
+                    <a
+                        href="https://nova-saas-six.vercel.app/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="project-preview-link"
+                        aria-label="Explore Nova SaaS website">
 
-                    <div class="website-preview nova">
+                        <div class="website-preview nova">
 
-                        <div class="browser-bar">
+                            <div class="browser-bar">
 
-                            <div class="browser-dots">
+                                <div class="browser-dots" aria-hidden="true">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
 
-                                <span></span>
-                                <span></span>
-                                <span></span>
+                                <small>nova-saas-six.vercel.app</small>
+
+                                <span class="browser-action" aria-hidden="true">↗</span>
 
                             </div>
 
+                            <div class="preview-content">
 
-                            <small>
-                                nova-saas-six.vercel.app
-                            </small>
+                                <img
+                                    src="images/nova.jpg"
+                                    alt="Nova SaaS technology website preview"
+                                    loading="lazy"
+                                    decoding="async">
 
-                        </div>
-
-
-                        <div class="preview-content">
-
-                            <img
-                                src="images/nova.jpg"
-                                alt="Nova SaaS website"
-                                loading="lazy">
+                            </div>
 
                         </div>
 
-                    </div>
-
+                    </a>
 
                     <div class="project-info">
 
-                        <div>
+                        <div class="project-details">
 
                             <span class="project-category">
                                 AI / SAAS / PRODUCT DESIGN
                             </span>
 
+                            <h3>NOVA</h3>
 
-                            <h3>
-                                NOVA
-                            </h3>
+                            <p class="project-description">
+                                A software product concept exploring
+                                modern interfaces and digital tools.
+                            </p>
 
                         </div>
-
 
                         <a
                             href="https://nova-saas-six.vercel.app/"
@@ -579,7 +600,7 @@
                             rel="noopener noreferrer"
                             class="view-site">
 
-                            View live site ↗
+                            Explore project <span aria-hidden="true">↗</span>
 
                         </a>
 
@@ -587,44 +608,52 @@
 
                 </article>
 
+            </div>
+
+            <div class="work-footer">
+
+                <span>INDEPENDENTLY CONCEIVED. DIGITALLY BUILT.</span>
+
+                <a
+                    href="https://www.behance.net/adrianndola"
+                    target="_blank"
+                    rel="noopener noreferrer">
+
+                    More creative work on Behance ↗
+
+                </a>
 
             </div>
 
         </section>
 
-
-        <!-- ABOUT -->
+        <!-- ABOUT THE CREATIVE -->
         <section class="about" id="about">
 
             <div class="about-label">
-
                 02 — THE CREATIVE
-
             </div>
-
 
             <div class="about-content">
 
+                <span class="section-label">
+                    MEET THE CREATIVE BEHIND THE WORK
+                </span>
+
                 <h2>
-
                     Design. Ideas.
-
-                    <em>
-                        Digital experiences.
-                    </em>
-
+                    <em>Digital experiences.</em>
                 </h2>
 
-
                 <p>
-
                     I'm <strong>Adrian Ndola</strong>, a graphic designer
-                    and digital creative building visual identities,
-                    websites and digital experiences through
-                    <strong>AIKEN'S WRLD.</strong>
+                    and digital creative interested in building distinctive
+                    visual identities, websites and digital experiences.
 
+                    Through <strong>AIKEN'S WRLD</strong>, I bring ideas
+                    to life through design, creative thinking and the
+                    possibilities of the digital world.
                 </p>
-
 
                 <div class="about-links">
 
@@ -633,15 +662,16 @@
                         target="_blank"
                         rel="noopener noreferrer">
 
-                        Behance ↗
+                        Explore Behance ↗
 
                     </a>
 
+                    <a href="about.html">
+                        More about me ↗
+                    </a>
 
                     <a href="mailto:thecreativeaiken@gmail.com">
-
                         Let's talk ↗
-
                     </a>
 
                 </div>
@@ -650,28 +680,24 @@
 
         </section>
 
+        <!-- CONTACT / CALL TO ACTION -->
+        <section class="cta" id="contact">
 
-        <!-- CTA -->
-        <section class="cta">
-
-            <span>
-                HAVE A PROJECT?
+            <span class="cta-label">
+                HAVE A PROJECT IN MIND?
             </span>
 
-
             <h2>
-
                 Let's build something
-
-                <em>
-                    worth remembering.
-                </em>
-
+                <em>worth remembering.</em>
             </h2>
 
+            <p class="cta-description">
+                Have an idea, a brand to build or a website to bring to life?
+                Let's turn the vision into something real.
+            </p>
 
             <div class="cta-contact">
-
 
                 <!-- WHATSAPP -->
                 <a
@@ -680,20 +706,18 @@
                     rel="noopener noreferrer"
                     class="cta-button">
 
-                    WhatsApp ↗
+                    WhatsApp <span aria-hidden="true">↗</span>
 
                 </a>
-
 
                 <!-- EMAIL -->
                 <a
-                    href="mailto:thecreativeaiken@gmail.com?subject=Web Project Inquiry"
+                    href="mailto:thecreativeaiken@gmail.com?subject=Web%20Project%20Inquiry"
                     class="cta-button">
 
-                    Email me ↗
+                    Email me <span aria-hidden="true">↗</span>
 
                 </a>
-
 
                 <!-- LINKEDIN -->
                 <a
@@ -702,39 +726,106 @@
                     rel="noopener noreferrer"
                     class="cta-button linkedin-link">
 
-                    LinkedIn — Adrian Ndola Awour ↗
+                    LinkedIn <span aria-hidden="true">↗</span>
 
                 </a>
 
-
             </div>
+
+            <span class="cta-note">
+                GOOD IDEAS START WITH A CONVERSATION.
+            </span>
 
         </section>
 
     </main>
 
-
     <!-- FOOTER -->
-    <footer>
+    <footer class="site-footer">
 
-        <span>
-            © 2026 AIKEN'S WRLD
+        <a href="#home" class="footer-brand">
+            AIKEN'S WRLD<span aria-hidden="true">.</span>
+        </a>
+
+        <span class="footer-credit">
+            © <span id="current-year">2026</span>
+            AIKEN'S WRLD. ALL RIGHTS RESERVED.
         </span>
 
-
-        <span>
+        <span class="footer-creator">
             ADRIAN NDOLA — CREATIVE / DIGITAL
         </span>
 
-
-        <a href="#home">
+        <a href="#home" class="back-to-top">
             BACK TO TOP ↑
         </a>
 
     </footer>
 
-
+    <!-- EXISTING SITE SCRIPT -->
     <script src="script.js"></script>
+
+    <!-- LIGHTWEIGHT NAVIGATION FALLBACK -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const menuToggle = document.querySelector(".menu-toggle");
+            const navigation = document.querySelector("#primary-navigation");
+            const year = document.querySelector("#current-year");
+
+            if (year) {
+                year.textContent = new Date().getFullYear();
+            }
+
+            if (menuToggle && navigation) {
+
+                menuToggle.addEventListener("click", () => {
+
+                    const isOpen =
+                        menuToggle.getAttribute("aria-expanded") === "true";
+
+                    menuToggle.setAttribute(
+                        "aria-expanded",
+                        String(!isOpen)
+                    );
+
+                    menuToggle.setAttribute(
+                        "aria-label",
+                        isOpen ? "Open navigation menu" : "Close navigation menu"
+                    );
+
+                    navigation.classList.toggle("is-open", !isOpen);
+
+                });
+
+                navigation.querySelectorAll("a").forEach((link) => {
+
+                    link.addEventListener("click", () => {
+
+                        menuToggle.setAttribute("aria-expanded", "false");
+                        menuToggle.setAttribute("aria-label", "Open navigation menu");
+                        navigation.classList.remove("is-open");
+
+                    });
+
+                });
+
+                document.addEventListener("keydown", (event) => {
+
+                    if (event.key === "Escape") {
+
+                        menuToggle.setAttribute("aria-expanded", "false");
+                        menuToggle.setAttribute("aria-label", "Open navigation menu");
+                        navigation.classList.remove("is-open");
+
+                    }
+
+                });
+
+            }
+
+        });
+    </script>
 
 </body>
 
