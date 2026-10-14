@@ -1,9 +1,9 @@
 
 /* =========================================================
-   AIKEN'S WRLD — PREMIUM PORTFOLIO
+   AIKEN'S WRLD — SIGNATURE PORTFOLIO DESIGN SYSTEM
    Creative direction: Adrian Ndola
    Fonts: DM Sans + Space Grotesk
-   Original brand palette preserved
+   Palette preserved: Blue / Black / Cream / White
    ========================================================= */
 
 
@@ -12,6 +12,8 @@
    ========================================================= */
 
 :root {
+    color-scheme: light;
+
     --black: #111111;
     --white: #ffffff;
     --cream: #f7f6f2;
@@ -19,26 +21,38 @@
     --light-gray: #e8e8e8;
     --blue: #0396ff;
 
-    --blue-soft: rgba(3, 150, 255, 0.10);
-    --blue-glow: rgba(3, 150, 255, 0.20);
-    --black-soft: rgba(17, 17, 17, 0.06);
-    --border-light: rgba(17, 17, 17, 0.10);
-    --border-dark: rgba(255, 255, 255, 0.14);
+    --blue-soft: rgba(3, 150, 255, 0.09);
+    --blue-glow: rgba(3, 150, 255, 0.18);
+
+    --black-soft: rgba(17, 17, 17, 0.045);
+    --border-light: rgba(17, 17, 17, 0.11);
+    --border-dark: rgba(255, 255, 255, 0.15);
 
     --font-body: "DM Sans", sans-serif;
     --font-heading: "Space Grotesk", sans-serif;
     --font-editorial: Georgia, serif;
+    --font-mono: "DM Mono", monospace;
 
-    --page-gutter: 8vw;
+    --page-gutter: clamp(24px, 7.5vw, 120px);
     --nav-height: 78px;
     --content-width: 1600px;
 
     --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
-    --transition-fast: 0.25s ease;
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+    --transition-fast: 0.22s ease;
     --transition-smooth: 0.45s var(--ease-premium);
+    --transition-slow: 0.75s var(--ease-premium);
 
     --radius-small: 3px;
     --radius-medium: 8px;
+
+    --shadow-card:
+        0 10px 30px rgba(17, 17, 17, 0.045);
+
+    --shadow-card-hover:
+        0 24px 55px rgba(17, 17, 17, 0.11),
+        0 5px 16px rgba(3, 150, 255, 0.055);
 }
 
 
@@ -56,8 +70,9 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: calc(var(--nav-height) + 20px);
+    scroll-padding-top: calc(var(--nav-height) + 24px);
     -webkit-text-size-adjust: 100%;
+    scrollbar-gutter: stable;
 }
 
 body {
@@ -69,7 +84,7 @@ body {
 
     font-family: var(--font-body);
     font-size: 15px;
-    line-height: 1.6;
+    line-height: 1.7;
 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -84,7 +99,8 @@ a {
 
 button,
 input,
-textarea {
+textarea,
+select {
     font: inherit;
 }
 
@@ -92,24 +108,41 @@ button {
     color: inherit;
 }
 
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-img {
-    display: block;
-    width: 100%;
-    max-width: 100%;
-}
-
 button,
 a {
     touch-action: manipulation;
 }
 
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+img {
+    height: auto;
+}
+
+button,
+input,
+textarea,
+select {
+    accent-color: var(--blue);
+}
+
 button:focus-visible,
-a:focus-visible {
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
     outline: 2px solid var(--blue);
     outline-offset: 5px;
 }
@@ -128,6 +161,39 @@ section {
     overflow: clip;
 }
 
+main {
+    width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+    overflow-wrap: break-word;
+}
+
+h1,
+h2,
+h3 {
+    text-wrap: balance;
+}
+
+button,
+a {
+    -webkit-appearance: none;
+}
+
+@supports not (overflow: clip) {
+    body {
+        overflow-x: hidden;
+    }
+
+    #main-content {
+        overflow-x: hidden;
+    }
+}
+
 
 /* =========================================================
    03. ACCESSIBILITY
@@ -144,7 +210,10 @@ section {
     background: var(--black);
     color: var(--white);
 
-    transform: translateY(-150%);
+    font-size: 12px;
+    font-weight: 700;
+
+    transform: translateY(-160%);
     transition: transform var(--transition-fast);
 }
 
@@ -154,7 +223,7 @@ section {
 
 
 /* =========================================================
-   04. CURSOR GLOW
+   04. OPTIONAL CURSOR GLOW
    ========================================================= */
 
 .cursor-glow {
@@ -167,12 +236,10 @@ section {
     height: 18px;
 
     border-radius: 50%;
-
-    background: rgba(3, 150, 255, 0.22);
+    background: rgba(3, 150, 255, 0.20);
 
     pointer-events: none;
     transform: translate(-50%, -50%);
-
     mix-blend-mode: multiply;
 
     opacity: 0;
@@ -187,7 +254,7 @@ body:hover .cursor-glow {
 
 
 /* =========================================================
-   05. PREMIUM NAVIGATION
+   05. NAVIGATION
    ========================================================= */
 
 .navbar {
@@ -202,52 +269,62 @@ body:hover .cursor-glow {
     align-items: center;
     justify-content: space-between;
 
-    gap: 35px;
-
+    gap: 30px;
     padding: 15px var(--page-gutter);
 
-    background: rgba(247, 246, 242, 0.96);
-
+    background: rgba(247, 246, 242, 0.94);
     border-bottom: 1px solid var(--border-light);
 
+    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
+
     transition:
-        padding var(--transition-fast),
-        background var(--transition-fast);
+        background var(--transition-fast),
+        border-color var(--transition-fast);
 }
 
 
-/* Brand */
+/* Brand mark: new and legacy markup */
 
-.brand-mark {
+.brand-mark,
+.logo {
     display: inline-flex;
     align-items: center;
     gap: 11px;
 
     flex-shrink: 0;
 
+    color: var(--black);
+
     font-family: var(--font-heading);
     font-size: 13px;
     font-weight: 700;
 
-    letter-spacing: 0.075em;
+    letter-spacing: 0.045em;
 }
 
-.brand-symbol {
+.brand-name,
+.logo span {
+    white-space: nowrap;
+}
+
+.brand-symbol,
+.logo-circle {
     width: 35px;
     height: 35px;
 
-    display: grid;
-    place-items: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
     flex-shrink: 0;
 
     border-radius: 50%;
-
     background: var(--black);
     color: var(--white);
 
     font-family: var(--font-heading);
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 700;
 
     transition:
@@ -256,51 +333,53 @@ body:hover .cursor-glow {
         transform var(--transition-smooth);
 }
 
-.brand-mark:hover .brand-symbol {
+.brand-mark:hover .brand-symbol,
+.logo:hover .logo-circle {
     background: var(--blue);
     color: var(--white);
-
     transform: rotate(-8deg);
-}
-
-.brand-name {
-    white-space: nowrap;
 }
 
 
 /* Navigation links */
 
-.navbar nav {
+.navbar nav,
+#primary-navigation {
     display: flex;
     align-items: center;
     justify-content: flex-end;
 
-    gap: clamp(20px, 3vw, 42px);
+    gap: clamp(18px, 2.8vw, 40px);
 }
 
-.navbar nav a {
+.navbar nav a,
+#primary-navigation a {
     position: relative;
 
     display: inline-flex;
     align-items: center;
-    gap: 5px;
 
+    min-height: 35px;
     padding: 8px 0;
 
     color: var(--black);
 
-    font-size: 12px;
-    font-weight: 600;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+
+    letter-spacing: 0.045em;
 
     transition: color var(--transition-fast);
 }
 
-.navbar nav a::after {
+.navbar nav a::after,
+#primary-navigation a::after {
     content: "";
 
     position: absolute;
     left: 0;
-    bottom: 2px;
+    bottom: 3px;
 
     width: 100%;
     height: 1px;
@@ -313,17 +392,30 @@ body:hover .cursor-glow {
     transition: transform var(--transition-smooth);
 }
 
-.navbar nav a:hover {
+.navbar nav a:hover,
+#primary-navigation a:hover {
     color: var(--blue);
 }
 
-.navbar nav a:hover::after {
+.navbar nav a:hover::after,
+#primary-navigation a:hover::after,
+.navbar nav a.active::after,
+#primary-navigation a.active::after,
+.navbar nav a[aria-current="page"]::after,
+#primary-navigation a[aria-current="page"]::after {
     transform: scaleX(1);
     transform-origin: left;
 }
 
+.navbar nav a.active,
+.navbar nav a[aria-current="page"],
+#primary-navigation a.active,
+#primary-navigation a[aria-current="page"] {
+    color: var(--black);
+}
 
-/* Mobile menu toggle */
+
+/* Mobile navigation toggle */
 
 .menu-toggle {
     display: none;
@@ -341,8 +433,16 @@ body:hover .cursor-glow {
     border-radius: var(--radius-small);
 
     background: transparent;
-
     cursor: pointer;
+
+    transition:
+        border-color var(--transition-fast),
+        background var(--transition-fast);
+}
+
+.menu-toggle:hover {
+    border-color: var(--blue);
+    background: var(--blue-soft);
 }
 
 .menu-toggle span {
@@ -362,14 +462,25 @@ body:hover .cursor-glow {
     width: 12px;
 }
 
+.menu-toggle[aria-expanded="true"] span:first-child {
+    transform: translateY(3.75px) rotate(45deg);
+}
+
+.menu-toggle[aria-expanded="true"] span:last-child {
+    width: 17px;
+    transform: translateY(-3.75px) rotate(-45deg);
+}
+
 
 /* =========================================================
-   06. HERO — EDITORIAL STYLE
+   06. HERO
    ========================================================= */
 
 .hero {
     position: relative;
+    isolation: isolate;
 
+    width: 100%;
     min-height: min(820px, calc(100svh - var(--nav-height)));
 
     display: flex;
@@ -377,66 +488,61 @@ body:hover .cursor-glow {
     align-items: flex-start;
     justify-content: center;
 
-    padding: 105px var(--page-gutter) 125px;
-
-    isolation: isolate;
+    padding: clamp(85px, 10vw, 145px) var(--page-gutter)
+        clamp(115px, 12vw, 155px);
 }
 
 
-/* Subtle background detail */
+/* Restrained geometric details */
 
-.hero::before {
-    content: "";
-
-    position: absolute;
-    z-index: -1;
-
-    top: 12%;
-    right: -8%;
-
-    width: min(42vw, 600px);
-    aspect-ratio: 1;
-
-    border: 1px solid rgba(3, 150, 255, 0.09);
-    border-radius: 50%;
-
-    pointer-events: none;
-}
-
+.hero::before,
 .hero::after {
     content: "";
 
     position: absolute;
     z-index: -1;
 
-    top: 23%;
-    right: 3%;
-
-    width: min(25vw, 350px);
     aspect-ratio: 1;
-
-    border: 1px solid rgba(17, 17, 17, 0.055);
     border-radius: 50%;
 
     pointer-events: none;
 }
 
+.hero::before {
+    top: 10%;
+    right: -8%;
 
-/* Hero label */
+    width: min(42vw, 610px);
+
+    border: 1px solid rgba(3, 150, 255, 0.10);
+}
+
+.hero::after {
+    top: 22%;
+    right: 4%;
+
+    width: min(25vw, 360px);
+
+    border: 1px solid rgba(17, 17, 17, 0.055);
+}
+
+
+/* Eyebrow */
 
 .hero-label {
     display: flex;
     align-items: center;
     gap: 12px;
 
-    margin-bottom: 32px;
+    margin-bottom: clamp(26px, 3.2vw, 40px);
 
     color: var(--gray);
 
+    font-family: var(--font-mono);
     font-size: 10px;
-    font-weight: 700;
+    font-weight: 500;
 
-    letter-spacing: 0.17em;
+    letter-spacing: 0.15em;
 }
 
 .hero-label span {
@@ -446,7 +552,6 @@ body:hover .cursor-glow {
     flex-shrink: 0;
 
     border-radius: 50%;
-
     background: var(--blue);
 
     box-shadow: 0 0 0 5px var(--blue-soft);
@@ -455,28 +560,26 @@ body:hover .cursor-glow {
 }
 
 
-/* Hero headline */
+/* Headline */
 
 .hero h1 {
-    max-width: 1050px;
+    max-width: 1150px;
 
     color: var(--blue);
 
     font-family: var(--font-heading);
-    font-size: clamp(64px, 9.4vw, 148px);
-
+    font-size: clamp(66px, 10vw, 152px);
     font-weight: 600;
 
     line-height: 0.88;
-    letter-spacing: -0.075em;
+    letter-spacing: -0.078em;
 
     text-wrap: balance;
 }
 
 .hero h1 em {
     display: block;
-
-    margin-top: 0.06em;
+    margin-top: 0.055em;
 
     color: var(--blue);
 
@@ -488,16 +591,16 @@ body:hover .cursor-glow {
 }
 
 
-/* Hero paragraph */
+/* Supporting description */
 
 .hero-description {
-    max-width: 520px;
+    max-width: 530px;
 
-    margin-top: 37px;
+    margin-top: clamp(27px, 3vw, 39px);
 
     color: var(--gray);
 
-    font-size: clamp(14px, 1.25vw, 17px);
+    font-size: clamp(14px, 1.2vw, 17px);
     line-height: 1.9;
 }
 
@@ -514,9 +617,8 @@ body:hover .cursor-glow {
     align-items: center;
     flex-wrap: wrap;
 
-    gap: 30px;
-
-    margin-top: 35px;
+    gap: 28px;
+    margin-top: 34px;
 }
 
 .primary-button {
@@ -525,27 +627,32 @@ body:hover .cursor-glow {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+
     gap: 25px;
-
     padding: 15px 22px;
-
-    background: var(--black);
-    color: var(--white);
 
     border: 1px solid var(--black);
     border-radius: var(--radius-small);
 
-    font-size: 12px;
+    background: var(--black);
+    color: var(--white);
+
+    font-size: 11px;
     font-weight: 700;
+    letter-spacing: 0.025em;
+
+    cursor: pointer;
 
     transition:
         background var(--transition-fast),
+        color var(--transition-fast),
         border-color var(--transition-fast),
-        transform var(--transition-smooth);
+        transform var(--transition-smooth),
+        box-shadow var(--transition-fast);
 }
 
 .primary-button span {
-    font-size: 19px;
+    font-size: 18px;
     line-height: 1;
 
     transition: transform var(--transition-fast);
@@ -556,6 +663,7 @@ body:hover .cursor-glow {
     border-color: var(--blue);
 
     transform: translateY(-3px);
+    box-shadow: 0 9px 24px rgba(3, 150, 255, 0.17);
 }
 
 .primary-button:hover span {
@@ -573,7 +681,7 @@ body:hover .cursor-glow {
 
     color: var(--black);
 
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 700;
 
     transition:
@@ -587,28 +695,30 @@ body:hover .cursor-glow {
 }
 
 
-/* Hero bottom information */
+/* Hero metadata */
 
 .hero-meta {
     position: absolute;
     right: var(--page-gutter);
-    bottom: 34px;
+    bottom: 30px;
     left: var(--page-gutter);
 
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 20px;
 
-    padding-top: 19px;
+    gap: 20px;
+    padding-top: 18px;
 
     border-top: 1px solid var(--border-light);
 
     color: var(--gray);
 
+    font-family: var(--font-mono);
     font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.13em;
+    font-weight: 400;
+
+    letter-spacing: 0.10em;
 }
 
 .scroll-text {
@@ -616,13 +726,11 @@ body:hover .cursor-glow {
     align-items: center;
     gap: 10px;
 
-    position: static;
-
     color: var(--gray);
 
+    font-family: var(--font-mono);
     font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.13em;
+    letter-spacing: 0.10em;
 }
 
 .scroll-text span {
@@ -632,26 +740,16 @@ body:hover .cursor-glow {
 
 
 /* =========================================================
-   07. WORK SECTION
+   07. SECTION HEADERS
    ========================================================= */
-
-.work {
-    padding: 125px var(--page-gutter) 100px;
-
-    background: var(--white);
-}
-
-
-/* Section heading */
 
 .section-header {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
 
-    gap: 60px;
-
-    margin-bottom: 75px;
+    gap: 55px;
+    margin-bottom: clamp(45px, 6vw, 78px);
 }
 
 .section-heading {
@@ -661,30 +759,28 @@ body:hover .cursor-glow {
 .section-label {
     display: block;
 
-    margin-bottom: 23px;
+    margin-bottom: 21px;
 
     color: var(--gray);
 
+    font-family: var(--font-mono);
     font-size: 10px;
-    font-weight: 700;
+    font-weight: 500;
 
-    letter-spacing: 0.16em;
+    letter-spacing: 0.15em;
 }
 
 .section-header h2 {
-    max-width: 750px;
+    max-width: 790px;
 
     color: var(--blue);
 
     font-family: var(--font-heading);
-    font-size: clamp(45px, 6.3vw, 86px);
-
+    font-size: clamp(45px, 6.5vw, 90px);
     font-weight: 600;
 
-    line-height: 0.94;
-    letter-spacing: -0.065em;
-
-    text-wrap: balance;
+    line-height: 0.95;
+    letter-spacing: -0.068em;
 }
 
 .section-header h2 em {
@@ -698,11 +794,10 @@ body:hover .cursor-glow {
 }
 
 .section-header > p {
-    max-width: 335px;
-
+    max-width: 350px;
     flex-shrink: 0;
 
-    padding-bottom: 5px;
+    padding-bottom: 4px;
 
     color: var(--gray);
 
@@ -712,16 +807,28 @@ body:hover .cursor-glow {
 
 
 /* =========================================================
-   08. PROJECT GRID
+   08. WORK SECTION
+   ========================================================= */
+
+.work {
+    padding: clamp(85px, 10vw, 140px) var(--page-gutter)
+        clamp(75px, 8vw, 110px);
+
+    background: var(--white);
+    scroll-margin-top: calc(var(--nav-height) + 20px);
+}
+
+
+/* =========================================================
+   09. PROJECT GRID
    ========================================================= */
 
 .projects {
     display: grid;
-
     grid-template-columns: repeat(2, minmax(0, 1fr));
 
-    column-gap: 30px;
-    row-gap: 76px;
+    column-gap: clamp(20px, 2.5vw, 36px);
+    row-gap: clamp(55px, 6vw, 82px);
 }
 
 .project {
@@ -736,50 +843,49 @@ body:hover .cursor-glow {
         transform 0.7s var(--ease-premium);
 }
 
-/* Supports existing scroll-reveal JavaScript */
+/* Compatible with existing reveal scripts */
 
 .project.show {
     opacity: 1;
     transform: translateY(0);
 }
 
-
-/* Project index */
-
 .project-number {
     display: block;
 
-    margin-bottom: 15px;
+    margin-bottom: 14px;
 
     color: var(--gray);
 
-    font-family: var(--font-heading);
+    font-family: var(--font-mono);
     font-size: 10px;
-    font-weight: 600;
 
     letter-spacing: 0.08em;
 }
 
 
-/* Project clickable image */
+/* Project preview link */
 
 .project-preview-link {
     display: block;
+    min-width: 0;
 
-    overflow: visible;
+    overflow: hidden;
 
     border-radius: var(--radius-small);
 
+    text-decoration: none;
     outline-offset: 5px;
 }
 
 
 /* =========================================================
-   09. WEBSITE PREVIEW WINDOWS
+   10. BROWSER PREVIEW CARDS
    ========================================================= */
 
 .website-preview {
     position: relative;
+    isolation: isolate;
 
     width: 100%;
     aspect-ratio: 16 / 10;
@@ -790,10 +896,7 @@ body:hover .cursor-glow {
     border-radius: var(--radius-small);
 
     background: var(--cream);
-
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.055);
-
-    isolation: isolate;
+    box-shadow: var(--shadow-card);
 
     transition:
         transform var(--transition-smooth),
@@ -802,17 +905,14 @@ body:hover .cursor-glow {
 }
 
 .project:hover .website-preview {
-    transform: translateY(-6px);
+    transform: translateY(-5px);
 
-    border-color: rgba(3, 150, 255, 0.25);
-
-    box-shadow:
-        0 25px 55px rgba(0, 0, 0, 0.11),
-        0 4px 15px rgba(3, 150, 255, 0.045);
+    border-color: rgba(3, 150, 255, 0.26);
+    box-shadow: var(--shadow-card-hover);
 }
 
 
-/* Browser top bar */
+/* Browser chrome */
 
 .browser-bar {
     position: absolute;
@@ -825,13 +925,11 @@ body:hover .cursor-glow {
 
     display: flex;
     align-items: center;
-
     gap: 12px;
 
     padding: 0 15px;
 
     background: rgba(255, 255, 255, 0.98);
-
     border-bottom: 1px solid rgba(17, 17, 17, 0.09);
 }
 
@@ -840,8 +938,8 @@ body:hover .cursor-glow {
     align-items: center;
 
     flex-shrink: 0;
-
     gap: 5px;
+
     margin-right: 5px;
 }
 
@@ -849,8 +947,9 @@ body:hover .cursor-glow {
     width: 7px;
     height: 7px;
 
-    border-radius: 50%;
+    flex-shrink: 0;
 
+    border-radius: 50%;
     background: #c9c9c9;
 }
 
@@ -866,12 +965,8 @@ body:hover .cursor-glow {
     background: #91c9a2;
 }
 
-
-/* Browser URL text */
-
 .browser-bar small {
     display: block;
-
     min-width: 0;
 
     overflow: hidden;
@@ -887,16 +982,11 @@ body:hover .cursor-glow {
     white-space: nowrap;
 }
 
-
-/* Browser external link indicator */
-
 .browser-action {
+    flex-shrink: 0;
     margin-left: auto;
 
-    flex-shrink: 0;
-
     color: var(--blue);
-
     font-size: 15px;
     line-height: 1;
 }
@@ -908,12 +998,10 @@ body:hover .cursor-glow {
     position: relative;
 
     display: block;
-
     width: 100%;
     height: 100%;
 
     overflow: hidden;
-
     padding-top: 43px;
 }
 
@@ -928,15 +1016,16 @@ body:hover .cursor-glow {
 
     transform: scale(1);
 
-    transition: transform 0.9s var(--ease-premium);
+    transition: transform 0.85s var(--ease-premium);
 }
 
-.project:hover .preview-content img {
-    transform: scale(1.045);
+.project:hover .preview-content img,
+.project-preview-link:hover .preview-content img {
+    transform: scale(1.035);
 }
 
 
-/* Individual preview positioning */
+/* Keep all supplied project screenshots aligned consistently */
 
 .palace .preview-content img,
 .ranjos .preview-content img,
@@ -949,7 +1038,7 @@ body:hover .cursor-glow {
 
 
 /* =========================================================
-   10. PROJECT INFORMATION
+   11. PROJECT INFORMATION
    ========================================================= */
 
 .project-info {
@@ -957,8 +1046,7 @@ body:hover .cursor-glow {
     align-items: flex-end;
     justify-content: space-between;
 
-    gap: 24px;
-
+    gap: 22px;
     margin-top: 22px;
 }
 
@@ -969,26 +1057,26 @@ body:hover .cursor-glow {
 .project-category {
     display: block;
 
-    margin-bottom: 10px;
+    margin-bottom: 9px;
 
     color: var(--gray);
 
+    font-family: var(--font-mono);
     font-size: 9px;
-    font-weight: 700;
+    font-weight: 500;
 
-    letter-spacing: 0.13em;
+    letter-spacing: 0.09em;
     line-height: 1.7;
 }
 
 .project-info h3 {
-    color: var(--blue);
+    color: var(--black);
 
     font-family: var(--font-heading);
-    font-size: clamp(20px, 2vw, 27px);
-
+    font-size: clamp(21px, 2.1vw, 29px);
     font-weight: 600;
 
-    line-height: 1.15;
+    line-height: 1.18;
     letter-spacing: -0.045em;
 
     overflow-wrap: anywhere;
@@ -1001,18 +1089,18 @@ body:hover .cursor-glow {
 }
 
 .project-description {
-    max-width: 390px;
+    max-width: 410px;
 
     margin-top: 10px;
 
     color: var(--gray);
 
     font-size: 12px;
-    line-height: 1.8;
+    line-height: 1.85;
 }
 
 
-/* View project link */
+/* View site action */
 
 .view-site {
     display: inline-flex;
@@ -1022,12 +1110,11 @@ body:hover .cursor-glow {
     flex-shrink: 0;
 
     padding-bottom: 5px;
-
     border-bottom: 1px solid var(--black);
 
     color: var(--black);
 
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 700;
 
     white-space: nowrap;
@@ -1040,25 +1127,23 @@ body:hover .cursor-glow {
 
 .view-site:hover {
     gap: 12px;
-
     color: var(--blue);
     border-color: var(--blue);
 }
 
 
-/* Work section footer */
+/* Work section closing row */
 
 .work-footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     flex-wrap: wrap;
 
     gap: 20px;
 
-    margin-top: 95px;
-    padding-top: 24px;
+    margin-top: clamp(60px, 8vw, 100px);
+    padding-top: 23px;
 
     border-top: 1px solid var(--border-light);
 }
@@ -1066,15 +1151,14 @@ body:hover .cursor-glow {
 .work-footer > span {
     color: var(--gray);
 
+    font-family: var(--font-mono);
     font-size: 9px;
-    font-weight: 700;
 
-    letter-spacing: 0.12em;
+    letter-spacing: 0.10em;
 }
 
 .work-footer > a {
     color: var(--black);
-
     font-size: 11px;
     font-weight: 700;
 
@@ -1087,19 +1171,19 @@ body:hover .cursor-glow {
 
 
 /* =========================================================
-   11. ABOUT THE CREATIVE
+   12. ABOUT SECTION
    ========================================================= */
 
 .about {
     display: grid;
-
     grid-template-columns: minmax(130px, 0.4fr) minmax(0, 1fr);
 
-    gap: 65px;
+    gap: clamp(40px, 5.5vw, 80px);
 
-    padding: 145px var(--page-gutter);
+    padding: clamp(90px, 11vw, 155px) var(--page-gutter);
 
     background: var(--cream);
+    scroll-margin-top: calc(var(--nav-height) + 20px);
 }
 
 .about-label {
@@ -1107,39 +1191,36 @@ body:hover .cursor-glow {
 
     color: var(--gray);
 
+    font-family: var(--font-mono);
     font-size: 10px;
-    font-weight: 700;
+    font-weight: 500;
 
-    letter-spacing: 0.16em;
+    letter-spacing: 0.14em;
 }
 
 .about-content {
     min-width: 0;
-    max-width: 850px;
+    max-width: 900px;
 }
 
 .about-content .section-label {
-    margin-bottom: 25px;
+    margin-bottom: 24px;
 }
 
 .about-content h2 {
     color: var(--blue);
 
     font-family: var(--font-heading);
-    font-size: clamp(48px, 6.5vw, 90px);
-
+    font-size: clamp(48px, 6.7vw, 94px);
     font-weight: 600;
 
-    line-height: 0.95;
-    letter-spacing: -0.065em;
-
-    text-wrap: balance;
+    line-height: 0.96;
+    letter-spacing: -0.067em;
 }
 
 .about-content h2 em {
     display: block;
-
-    margin-top: 0.08em;
+    margin-top: 0.07em;
 
     color: var(--blue);
 
@@ -1151,13 +1232,13 @@ body:hover .cursor-glow {
 }
 
 .about-content > p {
-    max-width: 650px;
+    max-width: 680px;
 
-    margin-top: 37px;
+    margin-top: 32px;
 
     color: var(--gray);
 
-    font-size: 15px;
+    font-size: 14px;
     line-height: 2;
 }
 
@@ -1175,7 +1256,6 @@ body:hover .cursor-glow {
     flex-wrap: wrap;
 
     gap: 25px;
-
     margin-top: 32px;
 }
 
@@ -1184,7 +1264,6 @@ body:hover .cursor-glow {
     align-items: center;
 
     padding-bottom: 5px;
-
     border-bottom: 1px solid var(--black);
 
     color: var(--black);
@@ -1204,11 +1283,14 @@ body:hover .cursor-glow {
 
 
 /* =========================================================
-   12. CONTACT / CTA
+   13. CONTACT CALL TO ACTION
    ========================================================= */
 
 .cta {
-    padding: 135px var(--page-gutter) 120px;
+    isolation: isolate;
+
+    padding: clamp(90px, 11vw, 150px) var(--page-gutter)
+        clamp(85px, 10vw, 125px);
 
     overflow: hidden;
 
@@ -1216,12 +1298,11 @@ body:hover .cursor-glow {
     color: var(--white);
 
     text-align: center;
-
-    isolation: isolate;
+    scroll-margin-top: calc(var(--nav-height) + 20px);
 }
 
 
-/* Subtle background decoration */
+/* Minimal decorative rings */
 
 .cta::before,
 .cta::after {
@@ -1230,7 +1311,7 @@ body:hover .cursor-glow {
     position: absolute;
     z-index: -1;
 
-    width: 360px;
+    width: min(34vw, 420px);
     aspect-ratio: 1;
 
     border: 1px solid rgba(255, 255, 255, 0.055);
@@ -1248,53 +1329,46 @@ body:hover .cursor-glow {
     right: -170px;
     bottom: -260px;
 
-    border-color: rgba(3, 150, 255, 0.14);
+    border-color: rgba(3, 150, 255, 0.15);
 }
 
 
-/* CTA label */
+/* CTA eyebrow */
 
-.cta > span {
+.cta > span,
+.cta .cta-label {
     display: block;
 
-    margin-bottom: 27px;
+    margin-bottom: 26px;
 
     color: #999999;
 
+    font-family: var(--font-mono);
     font-size: 10px;
-    font-weight: 700;
+    font-weight: 500;
 
-    letter-spacing: 0.18em;
-}
-
-.cta .cta-label {
-    color: #999999;
+    letter-spacing: 0.16em;
 }
 
 
 /* CTA headline */
 
 .cta h2 {
-    max-width: 1050px;
-
+    max-width: 1100px;
     margin: 0 auto;
 
     color: var(--blue);
 
     font-family: var(--font-heading);
-    font-size: clamp(48px, 7.5vw, 105px);
-
+    font-size: clamp(48px, 7.8vw, 110px);
     font-weight: 600;
 
-    line-height: 0.95;
-    letter-spacing: -0.065em;
-
-    text-wrap: balance;
+    line-height: 0.96;
+    letter-spacing: -0.068em;
 }
 
 .cta h2 em {
     display: block;
-
     margin-top: 0.06em;
 
     color: var(--blue);
@@ -1307,18 +1381,18 @@ body:hover .cursor-glow {
 }
 
 .cta-description {
-    max-width: 480px;
+    max-width: 500px;
 
     margin: 27px auto 0;
 
     color: #b5b5b5;
 
     font-size: 13px;
-    line-height: 1.9;
+    line-height: 1.95;
 }
 
 
-/* Contact buttons */
+/* CTA actions */
 
 .cta-contact {
     display: flex;
@@ -1327,8 +1401,7 @@ body:hover .cursor-glow {
     flex-wrap: wrap;
 
     gap: 12px;
-
-    margin-top: 42px;
+    margin-top: 40px;
 }
 
 .cta-button {
@@ -1339,10 +1412,9 @@ body:hover .cursor-glow {
     justify-content: center;
 
     gap: 12px;
-
     padding: 13px 20px;
 
-    border: 1px solid rgba(255, 255, 255, 0.30);
+    border: 1px solid rgba(255, 255, 255, 0.28);
     border-radius: var(--radius-small);
 
     background: transparent;
@@ -1361,7 +1433,6 @@ body:hover .cursor-glow {
 .cta-button:hover {
     background: var(--white);
     color: var(--black);
-
     border-color: var(--white);
 
     transform: translateY(-3px);
@@ -1371,7 +1442,6 @@ body:hover .cursor-glow {
     display: inline-block;
 
     color: var(--blue);
-
     font-size: 14px;
 
     transition: transform var(--transition-fast);
@@ -1385,42 +1455,43 @@ body:hover .cursor-glow {
 /* CTA final note */
 
 .cta .cta-note {
-    margin-top: 47px;
+    margin-top: 44px;
     margin-bottom: 0;
 
-    color: #777777;
+    color: #858585;
 
+    font-family: var(--font-mono);
     font-size: 9px;
-    font-weight: 700;
+    font-weight: 400;
 
-    letter-spacing: 0.14em;
+    letter-spacing: 0.12em;
 }
 
 
 /* =========================================================
-   13. FOOTER
+   14. FOOTER
    ========================================================= */
 
 .site-footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     flex-wrap: wrap;
 
     gap: 20px;
 
-    padding: 27px var(--page-gutter);
+    padding: 26px var(--page-gutter);
 
     border-top: 1px solid var(--border-dark);
 
     background: var(--black);
-    color: #777777;
+    color: #858585;
 
+    font-family: var(--font-mono);
     font-size: 9px;
-    font-weight: 600;
+    font-weight: 400;
 
-    letter-spacing: 0.09em;
+    letter-spacing: 0.075em;
 }
 
 .footer-brand {
@@ -1430,7 +1501,7 @@ body:hover .cursor-glow {
     font-size: 13px;
     font-weight: 700;
 
-    letter-spacing: 0.05em;
+    letter-spacing: 0.045em;
 
     transition: color var(--transition-fast);
 }
@@ -1439,7 +1510,8 @@ body:hover .cursor-glow {
     color: var(--blue);
 }
 
-.footer-brand:hover {
+.footer-brand:hover,
+.back-to-top:hover {
     color: var(--blue);
 }
 
@@ -1450,42 +1522,36 @@ body:hover .cursor-glow {
 
 .back-to-top {
     color: var(--white);
-
     transition: color var(--transition-fast);
 }
 
-.back-to-top:hover {
-    color: var(--blue);
-}
 
-
-/* Compatibility with the original footer markup */
+/* Compatibility for existing footer markup */
 
 footer:not(.site-footer) {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     flex-wrap: wrap;
 
     gap: 20px;
 
-    padding: 27px var(--page-gutter);
+    padding: 26px var(--page-gutter);
 
     border-top: 1px solid var(--border-dark);
 
     background: var(--black);
-    color: #777777;
+    color: #858585;
 
+    font-family: var(--font-mono);
     font-size: 9px;
-    font-weight: 600;
+    font-weight: 400;
 
-    letter-spacing: 0.09em;
+    letter-spacing: 0.075em;
 }
 
 footer:not(.site-footer) a {
     color: var(--white);
-
     transition: color var(--transition-fast);
 }
 
@@ -1495,7 +1561,7 @@ footer:not(.site-footer) a:hover {
 
 
 /* =========================================================
-   14. ANIMATIONS
+   15. ANIMATIONS
    ========================================================= */
 
 @keyframes status-pulse {
@@ -1511,26 +1577,17 @@ footer:not(.site-footer) a:hover {
 
 
 /* =========================================================
-   15. TABLET
+   16. LARGE TABLETS & SMALL LAPTOPS
    ========================================================= */
 
-@media (max-width: 1000px) {
-
+@media (max-width: 1100px) {
     :root {
         --page-gutter: 6vw;
-        --nav-height: 72px;
-    }
-
-    .hero {
-        min-height: 760px;
-        min-height: min(760px, calc(100svh - var(--nav-height)));
-
-        padding-top: 90px;
-        padding-bottom: 115px;
+        --nav-height: 74px;
     }
 
     .hero h1 {
-        font-size: clamp(65px, 10vw, 105px);
+        font-size: clamp(65px, 10vw, 115px);
     }
 
     .section-header {
@@ -1538,43 +1595,33 @@ footer:not(.site-footer) a:hover {
     }
 
     .section-header > p {
-        max-width: 285px;
+        max-width: 300px;
     }
 
     .projects {
-        column-gap: 22px;
+        column-gap: 23px;
         row-gap: 65px;
     }
 
     .project-info {
-        gap: 15px;
+        gap: 16px;
     }
 
     .project-info h3 {
-        font-size: 22px;
-    }
-
-    .view-site {
-        font-size: 10px;
+        font-size: 23px;
     }
 
     .about {
         gap: 45px;
     }
-
-    .site-footer {
-        column-gap: 25px;
-    }
-
 }
 
 
 /* =========================================================
-   16. MOBILE NAVIGATION & LAYOUT
+   17. MOBILE NAVIGATION & TABLET LAYOUT
    ========================================================= */
 
 @media (max-width: 800px) {
-
     :root {
         --page-gutter: 6vw;
         --nav-height: 68px;
@@ -1584,35 +1631,32 @@ footer:not(.site-footer) a:hover {
 
     .navbar {
         min-height: var(--nav-height);
-
         gap: 15px;
-
         padding: 12px var(--page-gutter);
     }
 
-    .brand-mark {
+    .brand-mark,
+    .logo {
         gap: 9px;
-
         font-size: 12px;
     }
 
-    .brand-symbol {
+    .brand-symbol,
+    .logo-circle {
         width: 32px;
         height: 32px;
-
         font-size: 15px;
     }
 
     .menu-toggle {
         display: flex;
-
         position: relative;
         z-index: 1002;
-
         flex-shrink: 0;
     }
 
-    .navbar nav {
+    .navbar nav,
+    #primary-navigation {
         position: absolute;
         top: calc(100% + 1px);
         left: 0;
@@ -1624,11 +1668,9 @@ footer:not(.site-footer) a:hover {
         flex-direction: column;
 
         gap: 0;
-
         padding: 8px var(--page-gutter) 20px;
 
         background: var(--cream);
-
         border-bottom: 1px solid var(--border-light);
 
         opacity: 0;
@@ -1643,42 +1685,33 @@ footer:not(.site-footer) a:hover {
             transform var(--transition-fast);
     }
 
-    .navbar nav.is-open {
+    .navbar nav.is-open,
+    #primary-navigation.is-open {
         opacity: 1;
         visibility: visible;
         pointer-events: auto;
-
         transform: translateY(0);
     }
 
-    .navbar nav a {
+    .navbar nav a,
+    #primary-navigation a {
         width: 100%;
+        min-height: 44px;
 
-        padding: 15px 0;
-
+        padding: 13px 0;
         border-bottom: 1px solid var(--border-light);
 
-        font-size: 13px;
+        font-size: 11px;
     }
 
-    .navbar nav a:last-child {
+    .navbar nav a:last-child,
+    #primary-navigation a:last-child {
         border-bottom: none;
     }
 
-    .navbar nav a::after {
+    .navbar nav a::after,
+    #primary-navigation a::after {
         display: none;
-    }
-
-
-    /* Animate hamburger into close icon */
-
-    .menu-toggle[aria-expanded="true"] span:first-child {
-        transform: translateY(3.75px) rotate(45deg);
-    }
-
-    .menu-toggle[aria-expanded="true"] span:last-child {
-        transform: translateY(-3.75px) rotate(-45deg);
-        width: 17px;
     }
 
 
@@ -1693,46 +1726,39 @@ footer:not(.site-footer) a:hover {
     }
 
     .hero::before {
-        top: 8%;
+        top: 7%;
         right: -30%;
-
         width: 75vw;
     }
 
     .hero::after {
         top: 16%;
         right: -8%;
-
         width: 45vw;
     }
 
     .hero-label {
-        margin-bottom: 29px;
-
+        margin-bottom: 27px;
         font-size: 9px;
-        letter-spacing: 0.13em;
+        letter-spacing: 0.12em;
     }
 
     .hero h1 {
-        max-width: 650px;
-
-        font-size: clamp(57px, 11.5vw, 90px);
-
-        line-height: 0.93;
+        max-width: 680px;
+        font-size: clamp(57px, 11.5vw, 91px);
+        line-height: 0.94;
     }
 
     .hero-description {
-        max-width: 480px;
-
+        max-width: 490px;
         margin-top: 27px;
 
         font-size: 14px;
-        line-height: 1.85;
+        line-height: 1.9;
     }
 
     .hero-buttons {
         gap: 22px;
-
         margin-top: 28px;
     }
 
@@ -1743,18 +1769,18 @@ footer:not(.site-footer) a:hover {
     .hero-meta {
         position: static;
 
-        margin-top: 65px;
+        margin-top: 60px;
         padding-top: 18px;
 
         gap: 15px;
 
         font-size: 8px;
-        letter-spacing: 0.08em;
+        letter-spacing: 0.07em;
     }
 
     .scroll-text {
         font-size: 8px;
-        letter-spacing: 0.08em;
+        letter-spacing: 0.07em;
     }
 
 
@@ -1769,33 +1795,29 @@ footer:not(.site-footer) a:hover {
         flex-direction: column;
 
         gap: 22px;
-
         margin-bottom: 45px;
     }
 
     .section-label {
         margin-bottom: 18px;
-
         font-size: 9px;
     }
 
     .section-header h2 {
-        font-size: clamp(43px, 8vw, 66px);
+        font-size: clamp(43px, 8vw, 67px);
     }
 
     .section-header > p {
-        max-width: 500px;
-
+        max-width: 520px;
         font-size: 13px;
     }
 
 
-    /* Single-column project layout */
+    /* Single-column project cards */
 
     .projects {
         grid-template-columns: minmax(0, 1fr);
-
-        gap: 54px;
+        gap: 55px;
     }
 
     .project-number {
@@ -1810,17 +1832,16 @@ footer:not(.site-footer) a:hover {
         align-items: flex-start;
         flex-direction: column;
 
-        gap: 16px;
-
+        gap: 15px;
         margin-top: 18px;
     }
 
     .project-info h3 {
-        font-size: clamp(22px, 5vw, 28px);
+        font-size: clamp(22px, 5vw, 29px);
     }
 
     .project-description {
-        max-width: 450px;
+        max-width: 500px;
     }
 
     .view-site {
@@ -1832,7 +1853,6 @@ footer:not(.site-footer) a:hover {
         flex-direction: column;
 
         gap: 15px;
-
         margin-top: 60px;
     }
 
@@ -1841,27 +1861,22 @@ footer:not(.site-footer) a:hover {
 
     .about {
         grid-template-columns: minmax(0, 1fr);
-
-        gap: 30px;
+        gap: 28px;
 
         padding: 85px var(--page-gutter);
     }
 
-    .about-label {
-        font-size: 9px;
-    }
-
+    .about-label,
     .about-content .section-label {
         font-size: 9px;
     }
 
     .about-content h2 {
-        font-size: clamp(46px, 8.5vw, 72px);
+        font-size: clamp(46px, 8.5vw, 74px);
     }
 
     .about-content > p {
         margin-top: 27px;
-
         font-size: 14px;
         line-height: 1.95;
     }
@@ -1878,7 +1893,7 @@ footer:not(.site-footer) a:hover {
     }
 
     .cta h2 {
-        font-size: clamp(45px, 8.5vw, 72px);
+        font-size: clamp(45px, 8.5vw, 74px);
     }
 
     .cta-description {
@@ -1887,7 +1902,6 @@ footer:not(.site-footer) a:hover {
 
     .cta-contact {
         gap: 12px;
-
         margin-top: 32px;
     }
 
@@ -1905,25 +1919,21 @@ footer:not(.site-footer) a:hover {
     .site-footer,
     footer:not(.site-footer) {
         justify-content: flex-start;
-
         gap: 16px;
-
         padding: 25px var(--page-gutter);
     }
 
     .footer-brand {
         width: 100%;
     }
-
 }
 
 
 /* =========================================================
-   17. SMALL PHONES
+   18. SMALL PHONES
    ========================================================= */
 
 @media (max-width: 480px) {
-
     :root {
         --page-gutter: 5.5vw;
     }
@@ -1933,12 +1943,15 @@ footer:not(.site-footer) a:hover {
         padding-bottom: 11px;
     }
 
-    .brand-mark {
+    .brand-mark,
+    .logo {
+        gap: 8px;
         font-size: 11px;
-        letter-spacing: 0.045em;
+        letter-spacing: 0.035em;
     }
 
-    .brand-symbol {
+    .brand-symbol,
+    .logo-circle {
         width: 30px;
         height: 30px;
     }
@@ -1958,11 +1971,10 @@ footer:not(.site-footer) a:hover {
 
     .hero-label {
         gap: 10px;
-
         margin-bottom: 25px;
 
         font-size: 8px;
-        letter-spacing: 0.11em;
+        letter-spacing: 0.10em;
     }
 
     .hero-label span {
@@ -1971,30 +1983,26 @@ footer:not(.site-footer) a:hover {
     }
 
     .hero h1 {
-        font-size: clamp(49px, 12.8vw, 62px);
-
+        font-size: clamp(47px, 12.6vw, 62px);
         letter-spacing: -0.07em;
-        line-height: 0.96;
+        line-height: 0.97;
     }
 
     .hero-description {
-        margin-top: 24px;
-
+        margin-top: 23px;
         font-size: 13px;
+        line-height: 1.9;
     }
 
     .hero-buttons {
         align-items: flex-start;
         flex-direction: column;
 
-        gap: 20px;
-
+        gap: 19px;
         margin-top: 25px;
     }
 
     .primary-button {
-        width: auto;
-
         padding: 14px 17px;
     }
 
@@ -2003,8 +2011,7 @@ footer:not(.site-footer) a:hover {
         flex-direction: column;
 
         gap: 12px;
-
-        margin-top: 50px;
+        margin-top: 48px;
     }
 
 
@@ -2016,7 +2023,7 @@ footer:not(.site-footer) a:hover {
     }
 
     .section-header h2 {
-        font-size: clamp(40px, 10vw, 49px);
+        font-size: clamp(39px, 9.8vw, 49px);
     }
 
     .section-header > p {
@@ -2024,7 +2031,7 @@ footer:not(.site-footer) a:hover {
     }
 
     .projects {
-        gap: 47px;
+        gap: 46px;
     }
 
     .website-preview {
@@ -2033,9 +2040,7 @@ footer:not(.site-footer) a:hover {
 
     .browser-bar {
         height: 36px;
-
         gap: 8px;
-
         padding: 0 9px;
     }
 
@@ -2082,7 +2087,7 @@ footer:not(.site-footer) a:hover {
     }
 
     .about-content h2 {
-        font-size: clamp(41px, 10vw, 51px);
+        font-size: clamp(40px, 9.8vw, 52px);
     }
 
     .about-content > p {
@@ -2092,7 +2097,6 @@ footer:not(.site-footer) a:hover {
     .about-links {
         align-items: flex-start;
         flex-direction: column;
-
         gap: 17px;
     }
 
@@ -2104,12 +2108,13 @@ footer:not(.site-footer) a:hover {
         padding-bottom: 75px;
     }
 
-    .cta > span {
+    .cta > span,
+    .cta .cta-label {
         font-size: 9px;
     }
 
     .cta h2 {
-        font-size: clamp(39px, 10vw, 49px);
+        font-size: clamp(38px, 9.8vw, 50px);
     }
 
     .cta-description {
@@ -2123,12 +2128,12 @@ footer:not(.site-footer) a:hover {
 
     .cta-button {
         width: 100%;
-        max-width: none;
     }
 
     .cta .cta-note {
+        margin-top: 32px;
         font-size: 8px;
-        letter-spacing: 0.09em;
+        letter-spacing: 0.08em;
     }
 
 
@@ -2137,57 +2142,104 @@ footer:not(.site-footer) a:hover {
     .site-footer,
     footer:not(.site-footer) {
         gap: 13px;
-
         font-size: 8px;
     }
-
 }
 
 
 /* =========================================================
-   18. TOUCH DEVICES
+   19. VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 360px) {
+    :root {
+        --page-gutter: 20px;
+    }
+
+    .brand-mark,
+    .logo {
+        font-size: 10px;
+    }
+
+    .hero h1 {
+        font-size: clamp(43px, 12vw, 48px);
+    }
+
+    .hero-meta {
+        font-size: 7px;
+    }
+
+    .section-header h2 {
+        font-size: 37px;
+    }
+
+    .project-info h3 {
+        font-size: 19px;
+    }
+
+    .browser-bar {
+        gap: 6px;
+        padding: 0 7px;
+    }
+
+    .browser-dots {
+        gap: 3px;
+    }
+
+    .browser-dots span {
+        width: 5px;
+        height: 5px;
+    }
+}
+
+
+/* =========================================================
+   20. TOUCH DEVICES
    ========================================================= */
 
 @media (hover: none), (pointer: coarse) {
-
     .cursor-glow {
         display: none;
     }
 
-    .project:hover .website-preview {
+    .project:hover .website-preview,
+    .project-preview-link:hover .website-preview {
         transform: none;
     }
 
-    .project:hover .preview-content img {
+    .project:hover .preview-content img,
+    .project-preview-link:hover .preview-content img {
         transform: none;
     }
 
     .primary-button:hover,
     .cta-button:hover {
         transform: none;
+        box-shadow: none;
     }
-
 }
 
 
 /* =========================================================
-   19. REDUCED MOTION ACCESSIBILITY
+   21. REDUCED MOTION
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
 
     *,
     *::before,
     *::after {
-        scroll-behavior: auto !important;
-
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
-
         transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
     }
 
-    .project {
+    .project,
+    .project.show {
         opacity: 1;
         transform: none;
     }
@@ -2195,15 +2247,21 @@ footer:not(.site-footer) a:hover {
     .cursor-glow {
         display: none;
     }
-
 }
 
 
 /* =========================================================
-   20. LEGACY COMPATIBILITY
+   22. LEGACY MARKUP COMPATIBILITY
    ========================================================= */
 
-/* Supports the older .logo and .logo-circle markup */
+/* Older project preview markup */
+
+.preview-content img {
+    object-fit: cover;
+    object-position: top center;
+}
+
+/* Older .logo / .logo-circle branding */
 
 .logo {
     display: inline-flex;
@@ -2228,7 +2286,6 @@ footer:not(.site-footer) a:hover {
     flex-shrink: 0;
 
     border-radius: 50%;
-
     background: var(--black);
     color: var(--white);
 
@@ -2236,197 +2293,14 @@ footer:not(.site-footer) a:hover {
     font-weight: 700;
 }
 
-/* Keep older project layouts compatible */
-
-.preview-content img {
-    object-fit: cover;
-    object-position: top center;
-}
-
-/* ==========================================
-   AIKEN'S WRLD — FINAL PREMIUM POLISH
-   Original brand palette preserved
-========================================== */
-
-:root {
-    --aiken-blue: #0396ff;
-    --aiken-black: #111111;
-    --aiken-white: #ffffff;
-    --aiken-cream: #f7f6f2;
-    --aiken-gray: #777777;
-    --aiken-light-gray: #e8e8e8;
-}
-
-/* Smooth scrolling */
-
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 100px;
-}
-
-body {
-    background-color: var(--aiken-cream);
-    color: var(--aiken-black);
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-}
-
-/* Keyboard accessibility */
-
-a:focus-visible,
-button:focus-visible {
-    outline: 2px solid var(--aiken-blue);
-    outline-offset: 5px;
-}
-
-/* Premium project cards */
-
-.project {
-    position: relative;
-    min-width: 0;
-}
-
-.project-preview-link {
-    display: block;
-    overflow: hidden;
-    border-radius: 4px;
-    text-decoration: none;
-}
-
-.website-preview {
-    overflow: hidden;
-    transition:
-        transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1),
-        box-shadow 0.5s ease;
-}
+/* Ensure anchors remain visually consistent */
 
 .project-preview-link img {
-    display: block;
-    width: 100%;
-    height: auto;
-    transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+    max-width: 100%;
 }
-
-.project-preview-link:hover img {
-    transform: scale(1.025);
-}
-
-.project-preview-link:focus-visible {
-    outline: 2px solid var(--aiken-blue);
-    outline-offset: 5px;
-}
-
-.project-info {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 24px;
-}
-
-.project-details {
-    min-width: 0;
-}
-
-.project-category {
-    color: var(--aiken-gray);
-    letter-spacing: 0.09em;
-}
-
-.view-site {
-    flex-shrink: 0;
-    color: var(--aiken-black);
-    text-decoration: none;
-    transition: color 0.25s ease;
-}
-
-.view-site:hover,
-.about-links a:hover,
-.work-footer a:hover {
-    color: var(--aiken-blue);
-}
-
-/* Buttons */
-
-.primary-button,
-.cta-button {
-    transition:
-        background-color 0.25s ease,
-        color 0.25s ease,
-        border-color 0.25s ease,
-        transform 0.25s ease;
-}
-
-.primary-button:hover,
-.cta-button:hover {
-    transform: translateY(-2px);
-}
-
-/* Navigation menu state */
-
-#primary-navigation a {
-    transition: color 0.2s ease;
-}
-
-#primary-navigation a:hover {
-    color: var(--aiken-blue);
-}
-
-/* Consistent section boundaries */
 
 .work,
 .about,
 .cta {
-    scroll-margin-top: 100px;
-}
-
-img {
-    max-width: 100%;
-}
-
-/* Mobile layout */
-
-@media (max-width: 700px) {
-
-    .project-info {
-        flex-direction: column;
-        gap: 16px;
-    }
-
-    .view-site {
-        align-self: flex-start;
-    }
-
-    .hero-meta {
-        flex-wrap: wrap;
-        gap: 12px;
-    }
-
-    .cta-contact {
-        flex-wrap: wrap;
-    }
-
-    .site-footer {
-        flex-wrap: wrap;
-        gap: 18px;
-    }
-
-}
-
-/* Respect reduced-motion preferences */
-
-@media (prefers-reduced-motion: reduce) {
-
-    html {
-        scroll-behavior: auto;
-    }
-
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-    }
-
+    scroll-margin-top: calc(var(--nav-height) + 20px);
 }

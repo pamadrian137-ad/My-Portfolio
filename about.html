@@ -5,72 +5,87 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#f7f6f2">
+    <meta name="description" content="Meet Adrian Ndola, the graphic designer and digital creative behind AIKEN'S WRLD. Explore brand identity, web design, digital marketing and creative direction.">
+    <meta name="author" content="Adrian Ndola">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="About — AIKEN'S WRLD">
+    <meta property="og:description" content="Creativity without limits. Discover the creative mind behind AIKEN'S WRLD.">
 
     <title>About — AIKEN'S WRLD | Adrian Ndola</title>
 
-    <meta name="description"
-        content="Discover Adrian Ndola, the graphic designer and digital creative behind AIKEN'S WRLD. Explore creative direction, brand identity, web design and digital experiences.">
-
-    <meta name="author" content="Adrian Ndola">
-    <meta property="og:title" content="About — AIKEN'S WRLD">
-    <meta property="og:description"
-        content="Creativity without limits. Meet the creative behind AIKEN'S WRLD.">
-    <meta property="og:type" content="website">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
 
     <style>
-        /* =========================================
-           AIKEN'S WRLD — PREMIUM ABOUT EXPERIENCE
-           Original brand colors preserved.
-           ========================================= */
-
         :root {
-            --aw-black: #111111;
-            --aw-white: #ffffff;
-            --aw-cream: #f7f6f2;
-            --aw-gray: #777777;
-            --aw-light-gray: #e8e8e8;
-            --aw-blue: #0396ff;
-            --aw-border: rgba(17, 17, 17, 0.13);
-            --aw-mono: "DM Mono", monospace;
-            --aw-display: "Space Grotesk", sans-serif;
-            --aw-body: "DM Sans", sans-serif;
+            --black: #111111;
+            --white: #ffffff;
+            --cream: #f7f6f2;
+            --gray: #777777;
+            --light-gray: #e8e8e8;
+            --blue: #0396ff;
+            --border: rgba(17, 17, 17, .13);
+            --display: "Space Grotesk", sans-serif;
+            --body: "DM Sans", sans-serif;
+            --mono: "DM Mono", monospace;
         }
 
-        /* BASE */
+        * {
+            box-sizing: border-box;
+        }
 
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 90px;
+            scroll-padding-top: 100px;
         }
 
         body {
-            background: var(--aw-cream);
-            color: var(--aw-black);
-            font-family: var(--aw-body);
+            margin: 0;
+            background: var(--cream);
+            color: var(--black);
+            font-family: var(--body);
             -webkit-font-smoothing: antialiased;
         }
 
         body::selection,
         body *::selection {
-            background: var(--aw-blue);
-            color: var(--aw-white);
+            background: var(--blue);
+            color: var(--white);
         }
 
         a {
+            color: inherit;
+            text-decoration: none;
             -webkit-tap-highlight-color: transparent;
         }
 
         a:focus-visible {
-            outline: 2px solid var(--aw-blue);
+            outline: 2px solid var(--blue);
             outline-offset: 5px;
+        }
+
+        button {
+            font: inherit;
+        }
+
+        .skip-link {
+            position: fixed;
+            top: 12px;
+            left: 12px;
+            z-index: 2000;
+            padding: 12px 18px;
+            background: var(--black);
+            color: var(--white);
+            transform: translateY(-160%);
+        }
+
+        .skip-link:focus {
+            transform: translateY(0);
         }
 
         /* NAVIGATION */
@@ -82,121 +97,153 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 25px;
-            padding: 20px 5vw;
-            background: rgba(247, 246, 242, 0.96);
-            border-bottom: 1px solid var(--aw-border);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
+            gap: 24px;
+            min-height: 78px;
+            padding: 16px 5vw;
+            border-bottom: 1px solid var(--border);
+            background: rgba(247, 246, 242, .94);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
         }
 
-        .navbar .logo {
+        .logo {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 11px;
             flex-shrink: 0;
-            font-family: var(--aw-display);
+            font-family: var(--display);
             font-size: 13px;
             font-weight: 700;
-            letter-spacing: -0.025em;
+            letter-spacing: -.045em;
         }
 
-        .navbar .logo::before {
-            content: "A";
+        .logo-symbol {
             display: grid;
-            width: 32px;
-            height: 32px;
+            width: 36px;
+            height: 36px;
             place-items: center;
             border-radius: 50%;
-            background: var(--aw-black);
-            color: var(--aw-white);
-            font-size: 14px;
-            transition: background 0.25s ease,
-                        transform 0.25s ease;
+            background: var(--black);
+            color: var(--white);
+            font-size: 16px;
+            transition: background .25s ease, transform .25s ease;
         }
 
-        .navbar .logo:hover::before {
-            background: var(--aw-blue);
+        .logo:hover .logo-symbol {
+            background: var(--blue);
             transform: rotate(-8deg);
         }
 
-        .navbar nav {
+        .nav-right {
             display: flex;
             align-items: center;
-            gap: clamp(15px, 2.5vw, 34px);
+            gap: clamp(15px, 2.7vw, 36px);
         }
 
-        .navbar nav a {
+        .nav-right a {
             position: relative;
-            font-family: var(--aw-mono);
+            padding: 8px 0;
+            font-family: var(--mono);
             font-size: 10px;
-            letter-spacing: 0.04em;
-            color: var(--aw-black);
-            opacity: 0.65;
-            transition: opacity 0.25s ease,
-                        color 0.25s ease;
+            letter-spacing: .06em;
+            color: var(--gray);
+            transition: color .25s ease;
         }
 
-        .navbar nav a:hover,
-        .navbar nav a.active {
-            color: var(--aw-blue);
-            opacity: 1;
+        .nav-right a:hover,
+        .nav-right a.active {
+            color: var(--blue);
         }
 
-        .navbar nav a::after {
-            content: "";
+        .nav-right a::after {
             position: absolute;
             right: 0;
-            bottom: -7px;
+            bottom: 1px;
             left: 0;
             height: 1px;
-            background: var(--aw-blue);
+            background: var(--blue);
+            content: "";
             transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.3s ease;
-        }
-
-        .navbar nav a:hover::after,
-        .navbar nav a.active::after {
-            transform: scaleX(1);
             transform-origin: left;
+            transition: transform .25s ease;
         }
 
-        /* SHARED LABELS */
+        .nav-right a:hover::after,
+        .nav-right a.active::after {
+            transform: scaleX(1);
+        }
 
+        .menu-toggle {
+            display: none;
+            width: 42px;
+            height: 42px;
+            padding: 10px;
+            border: 1px solid var(--border);
+            background: transparent;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 100%;
+            height: 1px;
+            margin: 5px 0;
+            background: var(--black);
+            transition: transform .25s ease;
+        }
+
+        .menu-toggle[aria-expanded="true"] span:first-child {
+            transform: translateY(3px) rotate(45deg);
+        }
+
+        .menu-toggle[aria-expanded="true"] span:last-child {
+            transform: translateY(-3px) rotate(-45deg);
+        }
+
+        /* SHARED ELEMENTS */
+
+        .mono,
         .eyebrow,
-        .about-label,
         .intro-number,
         .intro-bottom,
+        .about-label,
         .signature-line,
         .approach-line,
         .statement-number,
-        .cta-top span,
-        footer p,
-        footer a {
-            font-family: var(--aw-mono);
+        .cta-top,
+        footer {
+            font-family: var(--mono);
         }
 
         .eyebrow {
+            margin: 0;
             font-size: 10px;
-            font-weight: 500;
-            letter-spacing: 0.15em;
+            letter-spacing: .14em;
+            line-height: 1.8;
         }
 
-        /* INTRODUCTION */
+        .blue {
+            color: var(--blue);
+        }
 
-        .about-page {
+        /* PAGE INTRO */
+
+        .about-page,
+        .statement,
+        .about-cta {
             width: 90%;
             max-width: 1320px;
-            margin: 0 auto;
-            padding: clamp(75px, 10vw, 135px) 0 120px;
+            margin-inline: auto;
+        }
+
+        .about-page {
+            padding: clamp(76px, 10vw, 135px) 0 125px;
         }
 
         .about-intro {
-            position: relative;
-            padding-bottom: 38px;
+            padding-bottom: 36px;
             margin-bottom: clamp(75px, 10vw, 125px);
-            border-bottom: 1px solid var(--aw-border);
+            border-bottom: 1px solid var(--border);
         }
 
         .intro-top,
@@ -207,45 +254,65 @@
             gap: 20px;
         }
 
-        .intro-top .eyebrow {
-            margin: 0;
-        }
-
-        .intro-number {
-            font-size: 10px;
-            letter-spacing: 0.1em;
-            color: var(--aw-gray);
-        }
-
-        .about-intro h1 {
-            margin: clamp(35px, 5vw, 65px) 0;
-            font-family: var(--aw-display);
-            font-size: clamp(65px, 12vw, 170px);
-            line-height: 0.81;
-            font-weight: 700;
-            letter-spacing: -0.085em;
-        }
-
-        .about-intro h1 em {
-            color: var(--aw-blue);
-            font-style: normal;
-        }
-
+        .intro-number,
         .intro-bottom {
             font-size: 9px;
-            letter-spacing: 0.13em;
-            color: var(--aw-gray);
+            letter-spacing: .12em;
+            color: var(--gray);
         }
 
         .intro-bottom p {
             margin: 0;
         }
 
-        .intro-bottom span {
-            color: var(--aw-black);
+        .intro-bottom strong {
+            color: var(--black);
+            font-weight: 500;
         }
 
-        /* CONTENT GRID */
+        .about-intro h1 {
+            margin: clamp(42px, 6vw, 76px) 0;
+            font-family: var(--display);
+            font-size: clamp(64px, 12.5vw, 172px);
+            font-weight: 700;
+            letter-spacing: -.09em;
+            line-height: .79;
+        }
+
+        .about-intro h1 em,
+        .about-block h2 em,
+        .statement h2 em,
+        .about-cta h2 em {
+            color: var(--blue);
+            font-style: normal;
+        }
+
+        .intro-description {
+            display: grid;
+            grid-template-columns: 1fr minmax(220px, 370px);
+            align-items: end;
+            gap: 30px;
+            margin-top: 42px;
+        }
+
+        .intro-description h2 {
+            max-width: 580px;
+            margin: 0;
+            font-family: var(--display);
+            font-size: clamp(23px, 3vw, 38px);
+            font-weight: 500;
+            letter-spacing: -.055em;
+            line-height: 1.18;
+        }
+
+        .intro-description p {
+            margin: 0;
+            color: #5f5f5f;
+            font-size: 14px;
+            line-height: 1.85;
+        }
+
+        /* MAIN CONTENT */
 
         .about-content {
             display: grid;
@@ -255,113 +322,100 @@
 
         .about-block {
             min-width: 0;
-            max-width: 600px;
+            max-width: 620px;
         }
 
         .about-label {
             margin: 0 0 30px;
+            color: var(--gray);
             font-size: 10px;
-            letter-spacing: 0.12em;
-            color: var(--aw-gray);
+            letter-spacing: .12em;
         }
 
         .about-block h2 {
             margin: 0 0 28px;
-            font-family: var(--aw-display);
-            font-size: clamp(32px, 3.5vw, 48px);
-            line-height: 1.04;
+            font-family: var(--display);
+            font-size: clamp(32px, 3.6vw, 48px);
             font-weight: 600;
-            letter-spacing: -0.055em;
-        }
-
-        .about-block h2 em {
-            color: var(--aw-blue);
-            font-style: normal;
+            letter-spacing: -.065em;
+            line-height: 1.04;
         }
 
         .about-block p:not(.about-label) {
-            margin: 0 0 20px;
+            margin: 0 0 19px;
+            color: #595959;
             font-size: 15px;
             line-height: 1.9;
-            color: #555555;
         }
 
         .about-block p strong {
-            color: var(--aw-black);
+            color: var(--black);
         }
-
-        /* SIGNATURE */
 
         .signature-line {
             display: flex;
-            justify-content: space-between;
             flex-wrap: wrap;
+            justify-content: space-between;
             gap: 15px;
             margin-top: 38px;
             padding-top: 17px;
-            border-top: 1px solid var(--aw-border);
+            border-top: 1px solid var(--border);
+            color: var(--gray);
             font-size: 9px;
-            letter-spacing: 0.08em;
-            color: var(--aw-gray);
+            letter-spacing: .08em;
         }
 
-        /* SKILLS */
+        /* SERVICES */
 
         .skills {
-            border-top: 1px solid var(--aw-border);
+            border-top: 1px solid var(--border);
         }
 
         .skill {
             display: grid;
-            grid-template-columns: 38px minmax(0, 1fr) 25px;
+            grid-template-columns: 36px minmax(0, 1fr) 25px;
             align-items: center;
             gap: 12px;
-            min-height: 76px;
-            padding: 0 8px;
-            border-bottom: 1px solid var(--aw-border);
-            transition: background 0.3s ease,
-                        padding 0.3s ease,
-                        color 0.3s ease;
+            min-height: 75px;
+            padding: 0 10px;
+            border-bottom: 1px solid var(--border);
+            transition: background .3s ease, padding .3s ease, color .3s ease;
         }
 
         .skill:hover {
-            padding-right: 16px;
-            padding-left: 16px;
-            background: var(--aw-black);
-            color: var(--aw-white);
+            padding-inline: 17px;
+            background: var(--black);
+            color: var(--white);
         }
 
         .skill > span:first-child {
-            font-family: var(--aw-mono);
+            color: var(--gray);
+            font-family: var(--mono);
             font-size: 10px;
-            color: var(--aw-gray);
-            transition: color 0.3s ease;
+            transition: color .3s ease;
         }
 
-        .skill:hover > span:first-child {
-            color: var(--aw-blue);
+        .skill:hover > span:first-child,
+        .skill:hover .skill-arrow {
+            color: var(--blue);
         }
 
         .skill h3 {
             margin: 0;
-            font-family: var(--aw-display);
-            font-size: clamp(15px, 1.6vw, 19px);
+            font-family: var(--display);
+            font-size: clamp(15px, 1.7vw, 19px);
             font-weight: 500;
-            letter-spacing: -0.035em;
+            letter-spacing: -.035em;
         }
 
         .skill-arrow {
-            font-family: var(--aw-mono);
-            font-size: 15px;
             text-align: right;
-            opacity: 0.5;
-            transition: opacity 0.3s ease,
-                        transform 0.3s ease;
+            opacity: .65;
+            transition: color .3s ease, transform .3s ease;
         }
 
         .skill:hover .skill-arrow {
             opacity: 1;
-            color: var(--aw-blue);
             transform: translate(3px, -3px);
         }
 
@@ -374,69 +428,58 @@
         }
 
         .approach-block h2 {
-            max-width: 760px;
-            font-size: clamp(45px, 7vw, 82px);
-            line-height: 0.98;
+            max-width: 780px;
+            font-size: clamp(45px, 7.5vw, 86px);
+            line-height: .98;
         }
 
         .approach-line {
             display: flex;
             align-items: center;
             gap: 15px;
-            margin-top: 40px;
+            margin-top: 38px;
+            color: var(--gray);
             font-size: 9px;
-            letter-spacing: 0.09em;
-            color: var(--aw-gray);
+            letter-spacing: .09em;
         }
 
         .approach-line span {
-            width: 50px;
+            width: 48px;
             height: 1px;
             flex-shrink: 0;
-            background: var(--aw-blue);
+            background: var(--blue);
         }
 
-        /* CREATIVE STATEMENT */
+        /* STATEMENT */
 
         .statement {
             position: relative;
-            width: 90%;
-            max-width: 1320px;
-            margin: 0 auto;
             padding: clamp(85px, 11vw, 145px) 0;
-            border-top: 1px solid var(--aw-border);
-            border-bottom: 1px solid var(--aw-border);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
         }
 
         .statement-number {
             position: absolute;
             top: clamp(85px, 11vw, 145px);
             right: 0;
+            color: var(--gray);
             font-size: 10px;
-            color: var(--aw-gray);
         }
 
         .statement h2 {
             max-width: 1050px;
-            margin: 30px 0 0;
-            font-family: var(--aw-display);
-            font-size: clamp(45px, 7.8vw, 112px);
-            line-height: 0.95;
+            margin: 32px 0 0;
+            font-family: var(--display);
+            font-size: clamp(45px, 8vw, 112px);
             font-weight: 600;
-            letter-spacing: -0.075em;
-        }
-
-        .statement h2 em {
-            color: var(--aw-blue);
-            font-style: normal;
+            letter-spacing: -.08em;
+            line-height: .96;
         }
 
         /* CONTACT CTA */
 
         .about-cta {
-            width: 90%;
-            max-width: 1320px;
-            margin: 0 auto;
             padding: clamp(90px, 11vw, 145px) 0;
         }
 
@@ -445,37 +488,25 @@
             align-items: center;
             justify-content: space-between;
             gap: 20px;
-        }
-
-        .cta-top .eyebrow {
-            margin: 0;
-        }
-
-        .cta-top span {
+            color: var(--gray);
             font-size: 10px;
-            color: var(--aw-gray);
         }
 
         .about-cta h2 {
-            margin: 35px 0 28px;
-            font-family: var(--aw-display);
-            font-size: clamp(48px, 8.8vw, 125px);
-            line-height: 0.9;
+            margin: 36px 0 27px;
+            font-family: var(--display);
+            font-size: clamp(48px, 8.7vw, 120px);
             font-weight: 700;
-            letter-spacing: -0.08em;
-        }
-
-        .about-cta h2 em {
-            color: var(--aw-blue);
-            font-style: normal;
+            letter-spacing: -.085em;
+            line-height: .92;
         }
 
         .cta-description {
-            max-width: 540px;
+            max-width: 550px;
             margin: 0 0 38px;
+            color: #595959;
             font-size: 15px;
             line-height: 1.9;
-            color: #555555;
         }
 
         .cta-buttons {
@@ -484,117 +515,144 @@
             gap: 10px;
         }
 
-        .about-cta .cta-button {
+        .cta-button {
             display: inline-flex;
-            min-height: 48px;
             min-width: 145px;
+            min-height: 49px;
             align-items: center;
             justify-content: center;
             padding: 14px 21px;
-            border: 1px solid var(--aw-black);
+            border: 1px solid var(--black);
             background: transparent;
-            color: var(--aw-black);
-            font-family: var(--aw-mono);
+            color: var(--black);
+            font-family: var(--mono);
             font-size: 10px;
-            letter-spacing: 0.08em;
-            text-decoration: none;
-            transition: background 0.25s ease,
-                        color 0.25s ease,
-                        border-color 0.25s ease,
-                        transform 0.25s ease;
+            letter-spacing: .08em;
+            transition: color .25s ease, background .25s ease, border-color .25s ease, transform .25s ease;
         }
 
-        .about-cta .cta-button:hover {
-            background: var(--aw-black);
-            border-color: var(--aw-black);
-            color: var(--aw-white);
+        .cta-button:hover {
             transform: translateY(-3px);
+            background: var(--black);
+            color: var(--white);
         }
 
-        .about-cta .cta-button.primary {
-            background: var(--aw-blue);
-            border-color: var(--aw-blue);
-            color: var(--aw-white);
+        .cta-button.primary {
+            border-color: var(--blue);
+            background: var(--blue);
+            color: var(--white);
         }
 
-        .about-cta .cta-button.primary:hover {
-            background: var(--aw-black);
-            border-color: var(--aw-black);
+        .cta-button.primary:hover {
+            border-color: var(--black);
+            background: var(--black);
         }
 
         /* FOOTER */
 
-        body > footer,
-        main + footer {
-            display: grid !important;
+        .site-footer {
+            display: grid;
             grid-template-columns: 1fr 1fr auto;
             align-items: center;
-            gap: 25px;
-            padding: 25px 5vw !important;
-            background: var(--aw-cream);
-            color: var(--aw-black);
-            border-top: 1px solid var(--aw-border);
+            gap: 20px;
+            padding: 26px 5vw;
+            border-top: 1px solid var(--border);
         }
 
-        footer p {
+        .site-footer p {
             margin: 0;
+            color: var(--gray);
+            font-family: var(--mono);
             font-size: 9px;
+            letter-spacing: .07em;
             line-height: 1.8;
-            letter-spacing: 0.08em;
-            color: var(--aw-gray);
         }
 
-        footer p:nth-child(2) {
+        .site-footer p:nth-child(2) {
             text-align: center;
         }
 
-        footer a {
+        .site-footer a {
+            font-family: var(--mono);
             font-size: 9px;
-            letter-spacing: 0.08em;
-            color: var(--aw-black);
-            transition: color 0.25s ease;
+            letter-spacing: .07em;
+            transition: color .25s ease;
         }
 
-        footer a:hover {
-            color: var(--aw-blue);
+        .site-footer a:hover {
+            color: var(--blue);
         }
 
-        /* RESPONSIVE TABLET */
+        /* REVEAL ANIMATIONS */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity .75s ease, transform .75s cubic-bezier(.2, .7, .2, 1);
+        }
+
+        .reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+                scroll-behavior: auto !important;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        /* TABLET */
 
         @media (max-width: 800px) {
             .navbar {
-                padding: 17px 5vw;
+                min-height: 70px;
+                padding-block: 14px;
             }
 
-            .navbar nav {
-                gap: 17px;
+            .nav-right {
+                gap: 16px;
             }
 
-            .navbar nav a {
+            .nav-right a {
                 font-size: 9px;
             }
 
             .about-page {
-                padding: 80px 0 90px;
+                padding: 80px 0 95px;
             }
 
             .about-intro {
-                margin-bottom: 75px;
+                margin-bottom: 80px;
             }
 
             .about-intro h1 {
-                font-size: clamp(58px, 14vw, 105px);
-                margin: 40px 0;
-                line-height: 0.87;
+                font-size: clamp(58px, 13.5vw, 105px);
+                line-height: .86;
+            }
+
+            .intro-description {
+                grid-template-columns: 1fr;
+                gap: 18px;
             }
 
             .about-content {
                 grid-template-columns: 1fr;
-                gap: 70px;
-            }
-
-            .about-block {
-                max-width: 650px;
+                gap: 68px;
             }
 
             .approach-block {
@@ -602,66 +660,74 @@
                 padding-top: 0;
             }
 
-            .statement {
-                padding: 85px 0;
-            }
-
-            .statement-number {
-                top: 85px;
-            }
-
             .statement h2 {
-                font-size: clamp(43px, 9vw, 75px);
-            }
-
-            .about-cta {
-                padding: 90px 0;
+                font-size: clamp(43px, 9vw, 76px);
             }
 
             .about-cta h2 {
-                font-size: clamp(45px, 10vw, 78px);
+                font-size: clamp(45px, 10vw, 80px);
             }
 
-            body > footer,
-            main + footer {
+            .site-footer {
                 grid-template-columns: 1fr;
                 gap: 12px;
-                padding: 25px 5vw !important;
             }
 
-            footer p:nth-child(2) {
+            .site-footer p:nth-child(2) {
                 text-align: left;
             }
         }
 
-        /* RESPONSIVE MOBILE */
+        /* MOBILE NAVIGATION */
 
-        @media (max-width: 480px) {
+        @media (max-width: 600px) {
             .navbar {
-                gap: 10px;
-                padding: 15px 5vw;
+                gap: 12px;
             }
 
-            .navbar .logo {
-                gap: 7px;
+            .logo {
+                font-size: 11px;
+            }
+
+            .logo-symbol {
+                width: 32px;
+                height: 32px;
+            }
+
+            .menu-toggle {
+                display: block;
+                flex-shrink: 0;
+            }
+
+            .nav-right {
+                position: absolute;
+                top: calc(100% + 1px);
+                right: 0;
+                left: 0;
+                display: none;
+                align-items: stretch;
+                gap: 0;
+                padding: 12px 5vw 20px;
+                border-bottom: 1px solid var(--border);
+                background: var(--cream);
+            }
+
+            .nav-right.is-open {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .nav-right a {
+                padding: 15px 0;
+                border-bottom: 1px solid var(--border);
                 font-size: 10px;
             }
 
-            .navbar .logo::before {
-                width: 28px;
-                height: 28px;
+            .nav-right a:last-child {
+                border-bottom: 0;
             }
 
-            .navbar nav {
-                gap: 11px;
-            }
-
-            .navbar nav a {
-                font-size: 8px;
-                letter-spacing: 0;
-            }
-
-            .navbar nav a:last-child {
+            .nav-right a::after {
                 display: none;
             }
 
@@ -670,42 +736,33 @@
                 padding-top: 58px;
             }
 
-            .intro-top,
-            .intro-bottom,
-            .cta-top {
-                gap: 12px;
-            }
-
             .about-intro h1 {
-                font-size: 17.5vw;
-                letter-spacing: -0.075em;
+                font-size: 16.5vw;
+                letter-spacing: -.08em;
                 margin: 42px 0;
             }
 
+            .intro-top {
+                align-items: flex-start;
+            }
+
             .intro-bottom {
+                align-items: flex-start;
                 font-size: 8px;
-                letter-spacing: 0.06em;
+                letter-spacing: .05em;
             }
 
-            .about-content {
-                gap: 62px;
-            }
-
-            .about-label {
-                margin-bottom: 23px;
+            .intro-bottom p {
+                max-width: 65%;
             }
 
             .about-block h2 {
-                font-size: 32px;
+                font-size: 34px;
             }
 
             .about-block p:not(.about-label) {
                 font-size: 14px;
                 line-height: 1.85;
-            }
-
-            .signature-line {
-                font-size: 8px;
             }
 
             .skill {
@@ -719,16 +776,10 @@
             }
 
             .approach-block h2 {
-                font-size: 44px;
-            }
-
-            .approach-line {
-                align-items: flex-start;
-                font-size: 8px;
+                font-size: clamp(42px, 11vw, 54px);
             }
 
             .statement {
-                width: 90%;
                 padding: 75px 0;
             }
 
@@ -737,18 +788,17 @@
             }
 
             .statement h2 {
-                font-size: 12.5vw;
+                font-size: 12.2vw;
                 line-height: 1;
             }
 
             .about-cta {
-                width: 90%;
                 padding: 78px 0 85px;
             }
 
             .about-cta h2 {
-                font-size: 12.2vw;
-                line-height: 0.97;
+                font-size: 11.8vw;
+                line-height: .98;
             }
 
             .cta-description {
@@ -758,28 +808,14 @@
 
             .cta-buttons {
                 flex-direction: column;
-                gap: 9px;
             }
 
-            .about-cta .cta-button {
+            .cta-button {
                 width: 100%;
-                min-height: 48px;
-            }
-        }
-
-        /* REDUCED MOTION ACCESSIBILITY */
-
-        @media (prefers-reduced-motion: reduce) {
-            html {
-                scroll-behavior: auto;
             }
 
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
+            .site-footer {
+                padding: 25px 5vw;
             }
         }
     </style>
@@ -787,34 +823,48 @@
 
 <body>
 
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
     <!-- NAVIGATION -->
 
     <header class="navbar">
         <a href="index.html" class="logo" aria-label="AIKEN'S WRLD home">
+            <span class="logo-symbol" aria-hidden="true">A</span>
             <span>AIKEN'S WRLD</span>
         </a>
 
-        <nav aria-label="Main navigation">
-            <a href="index.html">WORK</a>
+        <button
+            class="menu-toggle"
+            type="button"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            aria-controls="primary-navigation">
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="nav-right" id="primary-navigation" aria-label="Main navigation">
+            <a href="index.html">WORK <span aria-hidden="true">↗</span></a>
             <a href="about.html" class="active" aria-current="page">ABOUT</a>
             <a href="contact.html">CONTACT</a>
             <a href="https://www.behance.net/adrianndola"
-               target="_blank" rel="noopener noreferrer">
+               target="_blank"
+               rel="noopener noreferrer">
                 BEHANCE ↗
             </a>
         </nav>
     </header>
 
-    <main>
+    <main id="main-content">
 
         <!-- INTRODUCTION -->
 
         <section class="about-page" aria-labelledby="about-heading">
 
-            <div class="about-intro">
+            <div class="about-intro reveal">
 
                 <div class="intro-top">
-                    <p class="eyebrow">ABOUT ME</p>
+                    <p class="eyebrow">ABOUT THE CREATIVE</p>
                     <span class="intro-number">01 / 03</span>
                 </div>
 
@@ -826,7 +876,20 @@
 
                 <div class="intro-bottom">
                     <p>DESIGNER / DIGITAL CREATIVE</p>
-                    <span>AIKEN'S WRLD</span>
+                    <strong>AIKEN'S WRLD</strong>
+                </div>
+
+                <div class="intro-description">
+                    <h2>
+                        Turning ideas into
+                        <span class="blue">distinctive digital experiences.</span>
+                    </h2>
+
+                    <p>
+                        An independent creative practice exploring design,
+                        digital culture, visual identity and the possibilities
+                        of the modern web.
+                    </p>
                 </div>
 
             </div>
@@ -835,9 +898,9 @@
 
                 <!-- WHO I AM -->
 
-                <section class="about-block who-block">
+                <section class="about-block who-block reveal">
 
-                    <p class="about-label">01 — WHO I AM</p>
+                    <p class="about-label">01 — THE PERSON</p>
 
                     <h2>
                         I'm Adrian Ndola,
@@ -856,6 +919,12 @@
                         come together.
                     </p>
 
+                    <p>
+                        My work is driven by curiosity: understanding what
+                        makes a brand distinctive and finding thoughtful
+                        ways to express that identity across digital platforms.
+                    </p>
+
                     <div class="signature-line">
                         <span>ADRIAN NDOLA</span>
                         <span>CREATIVE / DIGITAL</span>
@@ -865,7 +934,7 @@
 
                 <!-- SERVICES -->
 
-                <section class="about-block">
+                <section class="about-block reveal">
 
                     <p class="about-label">02 — WHAT I DO</p>
 
@@ -885,7 +954,7 @@
 
                         <div class="skill">
                             <span>03</span>
-                            <h3>Digital Experiences</h3>
+                            <h3>Web Design & Development</h3>
                             <span class="skill-arrow" aria-hidden="true">↗</span>
                         </div>
 
@@ -897,7 +966,7 @@
 
                         <div class="skill">
                             <span>05</span>
-                            <h3>Web Design</h3>
+                            <h3>Digital Experiences</h3>
                             <span class="skill-arrow" aria-hidden="true">↗</span>
                         </div>
 
@@ -907,9 +976,9 @@
 
                 <!-- CREATIVE APPROACH -->
 
-                <section class="about-block approach-block">
+                <section class="about-block approach-block reveal">
 
-                    <p class="about-label">03 — MY APPROACH</p>
+                    <p class="about-label">03 — THE APPROACH</p>
 
                     <h2>
                         Design should
@@ -925,7 +994,8 @@
                     <p>
                         Whether it's a brand, a website, a campaign or a
                         digital experience, I approach each project with
-                        curiosity and a willingness to explore new ideas.
+                        curiosity, intention and a willingness to explore
+                        new ideas.
                     </p>
 
                     <div class="approach-line">
@@ -940,7 +1010,7 @@
 
         <!-- CREATIVE STATEMENT -->
 
-        <section class="statement" aria-labelledby="statement-heading">
+        <section class="statement reveal" aria-labelledby="statement-heading">
 
             <span class="statement-number">02</span>
 
@@ -957,7 +1027,7 @@
 
         <!-- CONTACT CTA -->
 
-        <section class="about-cta" aria-labelledby="cta-heading">
+        <section class="about-cta reveal" aria-labelledby="cta-heading">
 
             <div class="cta-top">
                 <p class="eyebrow">LET'S CREATE</p>
@@ -977,7 +1047,8 @@
             <div class="cta-buttons">
 
                 <a href="https://wa.me/254794624359"
-                   target="_blank" rel="noopener noreferrer"
+                   target="_blank"
+                   rel="noopener noreferrer"
                    class="cta-button primary">
                     WHATSAPP ↗
                 </a>
@@ -988,7 +1059,8 @@
                 </a>
 
                 <a href="https://www.linkedin.com/in/adrian-ndola-awour-3a61433a2/"
-                   target="_blank" rel="noopener noreferrer"
+                   target="_blank"
+                   rel="noopener noreferrer"
                    class="cta-button">
                     LINKEDIN ↗
                 </a>
@@ -1001,11 +1073,79 @@
 
     <!-- FOOTER -->
 
-    <footer>
-        <p>© 2026 AIKEN'S WRLD</p>
+    <footer class="site-footer">
+        <p>© <span id="current-year">2026</span> AIKEN'S WRLD</p>
         <p>CREATIVITY WITHOUT LIMITS.</p>
         <a href="index.html">BACK TO WORK ↑</a>
     </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const menuToggle = document.querySelector(".menu-toggle");
+            const navigation = document.querySelector("#primary-navigation");
+            const year = document.querySelector("#current-year");
+
+            if (year) {
+                year.textContent = new Date().getFullYear();
+            }
+
+            if (menuToggle && navigation) {
+                const closeMenu = () => {
+                    menuToggle.setAttribute("aria-expanded", "false");
+                    menuToggle.setAttribute("aria-label", "Open navigation menu");
+                    navigation.classList.remove("is-open");
+                };
+
+                menuToggle.addEventListener("click", () => {
+                    const isOpen =
+                        menuToggle.getAttribute("aria-expanded") === "true";
+
+                    menuToggle.setAttribute("aria-expanded", String(!isOpen));
+                    menuToggle.setAttribute(
+                        "aria-label",
+                        isOpen ? "Open navigation menu" : "Close navigation menu"
+                    );
+
+                    navigation.classList.toggle("is-open", !isOpen);
+                });
+
+                navigation.querySelectorAll("a").forEach((link) => {
+                    link.addEventListener("click", closeMenu);
+                });
+
+                document.addEventListener("keydown", (event) => {
+                    if (event.key === "Escape") closeMenu();
+                });
+
+                window.addEventListener("resize", () => {
+                    if (window.innerWidth > 600) closeMenu();
+                });
+            }
+
+            const revealItems = document.querySelectorAll(".reveal");
+            const reduceMotion = window.matchMedia(
+                "(prefers-reduced-motion: reduce)"
+            ).matches;
+
+            if (reduceMotion || !("IntersectionObserver" in window)) {
+                revealItems.forEach((item) => item.classList.add("is-visible"));
+                return;
+            }
+
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("is-visible");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.12
+            });
+
+            revealItems.forEach((item) => revealObserver.observe(item));
+        });
+    </script>
 
 </body>
 </html>
